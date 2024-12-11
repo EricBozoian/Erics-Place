@@ -102,3 +102,74 @@ input:focus, textarea:focus {
     border: 3px solid #ffffff; /* White border for contrast */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
 }
+
+/* Scrolling Photo Box */
+.photo-box {
+    width: 7in;
+    height: 4in;
+    margin: 100px auto; /* Centers the box on the page */
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Ensures photos don’t spill outside the box */
+    border: 3px solid rgba(255, 255, 255, 0.6); /* White border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+}
+
+/* Wrapper for Photos */
+.photo-wrapper {
+    display: flex;
+    align-items: center;
+    transition: transform 0.5s ease-in-out; /* Smooth scrolling */
+}
+
+/* Individual Photo Styling */
+.photo {
+    flex: 0 0 30%; /* Smaller photos on the sides */
+    opacity: 0.6; /* Dim smaller photos */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Matches the box style */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Highlight Middle Photo */
+.middle-photo {
+    flex: 0 0 40%; /* Larger middle photo */
+    opacity: 1; /* Full brightness */
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    user-select: none; /* Prevents text selection */
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+}
