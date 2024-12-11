@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eric's Place</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            background-image: url('images/Eric\'s Place background v.1.png');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-    </style>
 </head>
 <body>
     <nav>
@@ -26,7 +17,6 @@
     </nav>
 
     <div class="main-content">
-        <!-- Profile Container -->
         <div class="profile-container">
             <div class="banner-name">Eric Bozoian</div>
             <div class="profile-section">
@@ -34,7 +24,6 @@
             </div>
         </div>
 
-        <!-- Scrolling Photo Box -->
         <div class="photo-box">
             <div class="arrow left-arrow">&#8249;</div>
             <div class="photo-wrapper">
@@ -47,45 +36,29 @@
     </div>
 
     <script>
-        let photos = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg"]; // Photo sources
-        let visiblePhotos = [0, 1, 2]; // Indexes of the currently visible photos
+        const photos = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg"];
+        let currentPhotos = [0, 1, 2];
 
         function updatePhotos() {
             const photoElements = document.querySelectorAll('.photo img');
-            visiblePhotos.forEach((photoIndex, i) => {
-                photoElements[i].src = `images/${photos[photoIndex]}`;
+            currentPhotos.forEach((index, i) => {
+                photoElements[i].src = `images/${photos[index]}`;
             });
         }
 
         function scrollPhotos(direction) {
-            if (direction === 'right') {
-                // Shift visible photos to the right
-                visiblePhotos = visiblePhotos.map(index => (index + 1) % photos.length);
-            } else if (direction === 'left') {
-                // Shift visible photos to the left
-                visiblePhotos = visiblePhotos.map(index => (index - 1 + photos.length) % photos.length);
+            if (direction === "right") {
+                currentPhotos = currentPhotos.map(index => (index + 1) % photos.length);
+            } else {
+                currentPhotos = currentPhotos.map(index => (index - 1 + photos.length) % photos.length);
             }
             updatePhotos();
         }
 
-        // Initial Setup
-        updatePhotos();
-
-        // Event Listeners for Arrow Controls
         document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
         document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
 
-        // Auto-scroll every 3 seconds
-        let autoScroll = setInterval(() => scrollPhotos('right'), 3000);
-
-        // Pause auto-scroll on hover
-        document.querySelector('.photo-box').addEventListener('mouseenter', () => clearInterval(autoScroll));
-        document.querySelector('.photo-box').addEventListener('mouseleave', () => {
-            autoScroll = setInterval(() => scrollPhotos('right'), 3000);
-        });
-    </script>
-</body>
-</html>
+        updatePhotos();
     </script>
 </body>
 </html>
