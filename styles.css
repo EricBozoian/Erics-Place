@@ -77,9 +77,10 @@ input:focus, textarea:focus {
 .profile-container {
     display: flex;
     flex-direction: column; /* Stacks name above photo */
-    position: relative; /* Allows precise positioning */
-    left: 2in; /* Offsets the container by 2 inches from the left */
-    margin-top: 80px; /* Moves the container below the menu bar */
+    position: absolute; /* Positions the container precisely */
+    top: 80px; /* Keeps the distance from the menu bar consistent */
+    left: 2in; /* Offsets the container 2 inches from the left */
+    text-align: left; /* Ensures content inside is left-aligned */
 }
 
 /* Banner Name Styling */
@@ -90,7 +91,6 @@ input:focus, textarea:focus {
     color: #ffffff; /* White text for contrast */
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
     margin-bottom: 10px; /* Adds spacing below the name */
-    text-align: left; /* Aligns text to the left to match offset */
 }
 
 /* Profile Photo Styling */
@@ -101,7 +101,4 @@ input:focus, textarea:focus {
     border-radius: 50%; /* Circular shape */
     border: 3px solid #ffffff; /* White border for contrast */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
-    text-align: left; /* Aligns the image to match the left offset */
 }
-
-
