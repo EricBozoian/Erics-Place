@@ -35,96 +35,57 @@
         </div>
 
         <!-- Scrolling Photo Box -->
-       <div class="photo-box">
-    <div class="arrow left-arrow">&#8249;</div>
-    <div class="photo-wrapper">
-        <div class="photo" data-index="0">
-            <img src="images/photo1.jpg" alt="Photo 1">
-        </div>
-        <div class="photo" data-index="1">
-            <img src="images/photo2.jpg" alt="Photo 2">
-        </div>
-        <div class="photo" data-index="2">
-            <img src="images/photo3.jpg" alt="Photo 3">
+        <div class="photo-box">
+            <div class="arrow left-arrow">&#8249;</div>
+            <div class="photo-wrapper">
+                <div class="photo"><img src="images/photo1.jpg" alt="Photo 1"></div>
+                <div class="photo"><img src="images/photo2.jpg" alt="Photo 2"></div>
+                <div class="photo"><img src="images/photo3.jpg" alt="Photo 3"></div>
+            </div>
+            <div class="arrow right-arrow">&#8250;</div>
         </div>
     </div>
-    <div class="arrow right-arrow">&#8250;</div>
-</div>
-    </div>
 
-    <!-- Mustache Template -->
-    <script id="photo-template" type="text/template">
-        {{#photos}}
-        <div class="photo">
-            <img src="images/image-box-photos/{{.}}" alt="Photo">
-        </div>
-        {{/photos}}
-    </script>
-
-    <!-- JavaScript to Populate Photos -->
-    <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
     <script>
-        const photos = [
-            "photo1.jpg",
-            "photo2.jpg",
-            "photo3.jpg",
-            "photo4.jpg"
-        ];
+        let photos = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg"]; // Photo sources
+        let visiblePhotos = [0, 1, 2]; // Indexes of the currently visible photos
 
-        const template = document.getElementById('photo-template').innerHTML;
-        const rendered = Mustache.render(template, { photos });
-        document.querySelector('.photo-wrapper').innerHTML = rendered;
-
-       // JavaScript for Photo Box Scrolling
-let currentIndex = 1; // Start with the second photo as the center
-
-function updatePhotos() {
-    const photos = document.querySelectorAll('.photo');
-    photos.forEach((photo, index) => {
-        // Remove existing classes
-        photo.classList.remove('active', 'left', 'right', 'hidden');
-
-        if (index === currentIndex) {
-            photo.classList.add('active'); // Center photo
-        } else if (index === (currentIndex - 1 + photos.length) % photos.length) {
-            photo.classList.add('left'); // Left photo
-        } else if (index === (currentIndex + 1) % photos.length) {
-            photo.classList.add('right'); // Right photo
-        } else {
-            photo.classList.add('hidden'); // Hide all other photos
+        function updatePhotos() {
+            const photoElements = document.querySelectorAll('.photo img');
+            visiblePhotos.forEach((photoIndex, i) => {
+                photoElements[i].src = `images/${photos[photoIndex]}`;
+            });
         }
-    });
 
-    // Smooth scrolling effect
-    const offset = -currentIndex * 33.33; // Adjust for container width
-    document.querySelector('.photo-wrapper').style.transform = `translateX(${offset}%)`;
-}
+        function scrollPhotos(direction) {
+            if (direction === 'right') {
+                // Shift visible photos to the right
+                visiblePhotos = visiblePhotos.map(index => (index + 1) % photos.length);
+            } else if (direction === 'left') {
+                // Shift visible photos to the left
+                visiblePhotos = visiblePhotos.map(index => (index - 1 + photos.length) % photos.length);
+            }
+            updatePhotos();
+        }
 
-function scrollPhotos(direction) {
-    const photos = document.querySelectorAll('.photo');
-    if (direction === 'left') {
-        currentIndex = (currentIndex - 1 + photos.length) % photos.length; // Move left
-    } else {
-        currentIndex = (currentIndex + 1) % photos.length; // Move right
-    }
-    updatePhotos();
-}
+        // Initial Setup
+        updatePhotos();
 
-// Initial Setup
-updatePhotos();
+        // Event Listeners for Arrow Controls
+        document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
+        document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
 
-// Event Listeners for Arrow Controls
-document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
-document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
+        // Auto-scroll every 3 seconds
+        let autoScroll = setInterval(() => scrollPhotos('right'), 3000);
 
-// Auto-scroll every 3 seconds
-let autoScroll = setInterval(() => scrollPhotos('right'), 3000);
-
-// Pause auto-scroll on hover
-document.querySelector('.photo-box').addEventListener('mouseenter', () => clearInterval(autoScroll));
-document.querySelector('.photo-box').addEventListener('mouseleave', () => {
-    autoScroll = setInterval(() => scrollPhotos('right'), 3000);
-});
+        // Pause auto-scroll on hover
+        document.querySelector('.photo-box').addEventListener('mouseenter', () => clearInterval(autoScroll));
+        document.querySelector('.photo-box').addEventListener('mouseleave', () => {
+            autoScroll = setInterval(() => scrollPhotos('right'), 3000);
+        });
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
