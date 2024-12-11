@@ -76,9 +76,10 @@ input:focus, textarea:focus {
 /* Profile Container Styling */
 .profile-container {
     display: flex;
-    flex-direction: column; /* Aligns items vertically */
-    align-items: center; /* Centers both name and photo */
-    margin-top: 60px; /* Adjust spacing from the navigation bar */
+    flex-direction: column; /* Stacks name above photo */
+    position: relative; /* Allows precise positioning */
+    left: 2in; /* Offsets the container by 2 inches from the left */
+    margin-top: 80px; /* Moves the container below the menu bar */
 }
 
 /* Banner Name Styling */
@@ -89,9 +90,10 @@ input:focus, textarea:focus {
     color: #ffffff; /* White text for contrast */
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
     margin-bottom: 10px; /* Adds spacing below the name */
+    text-align: left; /* Aligns text to the left to match offset */
 }
 
-/* Profile Photo Styling (Unchanged from Earlier) */
+/* Profile Photo Styling */
 .profile-photo {
     display: block;
     width: 180px; /* 20% larger */
@@ -99,5 +101,7 @@ input:focus, textarea:focus {
     border-radius: 50%; /* Circular shape */
     border: 3px solid #ffffff; /* White border for contrast */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
+    text-align: left; /* Aligns the image to match the left offset */
 }
+
 
