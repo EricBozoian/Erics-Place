@@ -103,15 +103,31 @@ input:focus, textarea:focus {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
 }
 
+/* Main Content Container */
+.main-content {
+    display: flex; /* Align items horizontally */
+    justify-content: space-between; /* Adds space between the two sections */
+    align-items: center; /* Vertically centers items */
+    margin-top: 100px; /* Adjusts distance from the menu bar */
+}
+
+/* Profile Container Styling */
+.profile-container {
+    display: flex;
+    flex-direction: column; /* Stacks name and profile photo */
+    position: relative;
+    text-align: left;
+    left: 2in; /* Positions profile container 2 inches from the left */
+}
+
 /* Scrolling Photo Box */
 .photo-box {
     width: 7in;
     height: 4in;
-    margin: 100px auto; /* Centers the box on the page */
-    position: relative;
     display: flex;
     align-items: center;
-    overflow: hidden; /* Ensures photos don’t spill outside the box */
+    position: relative; /* Allows arrows to be positioned correctly */
+    overflow: hidden; /* Prevents photos from spilling out */
     border: 3px solid rgba(255, 255, 255, 0.6); /* White border */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
