@@ -1,0 +1,75 @@
+/* General Body Styling */
+body {
+    background-image: url('images/forest-background.png'); /* Update the path if needed */
+    background-size: cover; /* Ensures the image covers the whole screen */
+    background-attachment: fixed; /* Prevents scrolling the background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+    color: #f5f5f5; /* Light font color for contrast */
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar Styling */
+nav {
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* Ensures it stays on top */
+}
+
+nav a {
+    color: #f5f5f5;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 1.2em;
+}
+
+nav a:hover {
+    color: #ffcc66; /* Highlight link on hover */
+}
+
+/* Content Container */
+.container {
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
+    margin: 100px auto;
+    max-width: 800px; /* Keeps content width manageable */
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Adds readability */
+}
+
+/* Paragraphs and Links */
+p, a {
+    color: #dcdcdc;
+}
+
+a:hover {
+    color: #ffcc66; /* Highlight links on hover */
+}
+
+/* Form Inputs */
+input, textarea {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #66ccff; /* Highlight active fields */
+    background-color: rgba(255, 255, 255, 1);
+}
