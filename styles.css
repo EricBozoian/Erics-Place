@@ -1,24 +1,24 @@
 /* General Body Styling */
 body {
-    background-image: url('images/forest-background.png'); /* Update the path if needed */
-    background-size: cover; /* Ensures the image covers the whole screen */
-    background-attachment: fixed; /* Prevents scrolling the background */
-    background-position: center; /* Centers the image */
+    background-image: url('images/forest-background.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     background-repeat: no-repeat;
-    color: #f5f5f5; /* Light font color for contrast */
-    font-family: 'Arial', sans-serif; /* Clean and modern font */
+    color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
 }
 
 /* Navigation Bar Styling */
 nav {
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 10px 20px;
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000; /* Ensures it stays on top */
+    z-index: 1000;
 }
 
 nav a {
@@ -29,97 +29,47 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffcc66; /* Highlight link on hover */
+    color: #ffcc66;
 }
 
-/* Content Container */
-.container {
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
-    margin: 100px auto;
-    max-width: 800px; /* Keeps content width manageable */
-}
-
-/* Headings */
-h1, h2, h3 {
-    color: #ffffff;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Adds readability */
-}
-
-/* Paragraphs and Links */
-p, a {
-    color: #dcdcdc;
-}
-
-a:hover {
-    color: #ffcc66; /* Highlight links on hover */
-}
-
-/* Form Inputs */
-input, textarea {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-input:focus, textarea:focus {
-    outline: none;
-    border-color: #66ccff; /* Highlight active fields */
-    background-color: rgba(255, 255, 255, 1);
-}
-/* Profile Container Styling */
-.profile-container {
-    display: flex;
-    flex-direction: column; /* Stacks name above photo */
-    top: 80px; /* Keeps the distance from the menu bar consistent */
-    left: 1in; /* Offsets the container 2 inches from the left */
-    text-align: left; /* Ensures content inside is left-aligned */
-}
-
-/* Banner Name Styling */
-.banner-name {
-    font-family: 'Dancing Script', cursive; /* Stylish font */
-    font-size: 48px; /* Large size */
-    font-weight: bold;
-    color: #ffffff; /* White text for contrast */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
-    margin-bottom: 10px; /* Adds spacing below the name */
-}
-
-/* Profile Photo Styling */
-.profile-photo {
-    display: block;
-    width: 180px; /* 20% larger */
-    height: 180px; /* Keeps aspect ratio */
-    border-radius: 50%; /* Circular shape */
-    border: 3px solid #ffffff; /* White border for contrast */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
-}
-
-/* Layout for Main Content */
+/* Main Content Layout */
 .main-content {
     display: flex;
-    justify-content: space-between; /* Space between profile container and photo box */
-    align-items: center; /* Aligns both elements vertically */
-    margin: 100px auto; /* Adds space below the navigation bar */
-    max-width: 90%; /* Ensures content is responsive */
+    justify-content: space-between;
+    align-items: center;
+    margin: 100px auto;
+    max-width: 90%;
 }
-/* Profile Container Styling */
+
+/* Profile Container */
 .profile-container {
     display: flex;
     flex-direction: column;
     width: 300px;
 }
 
+.banner-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
+}
+
+.profile-photo {
+    display: block;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Photo Box Styling */
 .photo-box {
-    flex: 1; /* Photo box takes the remaining space */
-    height: 300px; /* Adjust height as needed */
+    flex: 1;
+    height: 300px;
     display: flex;
     align-items: center;
     position: relative;
@@ -129,35 +79,36 @@ input:focus, textarea:focus {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     background-color: rgba(0, 0, 0, 0.5);
 }
+
 .photo-wrapper {
     display: flex;
-    justify-content: center;
-    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
 }
-/* Individual Photos */
+
 .photo {
     flex: 0 0 33.33%;
     opacity: 0.75;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
+
 .photo img {
     width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.5s ease-in-out;
 }
-/* Highlight Center Photo */
-.photo:nth-child(2)
+
 .photo.active {
-    opacity: 1; /* Full opacity for the middle photo */
-    transform: scale(1); /* Full size for the middle photo */
+    opacity: 1;
+    transform: scale(1.1);
 }
-.photo.left, .photo.right {
-    opacity: 0.65; /* 35% reduced opacity for side photos */
-    transform: scale(0.75); /* 25% smaller size for side photos */
+
+.photo.left,
+.photo.right {
+    opacity: 0.65;
+    transform: scale(0.85);
 }
-/* Arrows */
+
 .arrow {
     position: absolute;
     top: 50%;
@@ -168,8 +119,7 @@ input:focus, textarea:focus {
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 50%;
-    user-select: none;
-    z-index: 100;
+    z-index: 10;
 }
 
 .left-arrow {
@@ -179,9 +129,3 @@ input:focus, textarea:focus {
 .right-arrow {
     right: 10px;
 }
-
-.arrow:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #000;
-}
-
