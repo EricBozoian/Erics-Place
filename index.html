@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <!-- Scrolling Photo Box -->
+        <!-- Photo Box -->
         <div class="photo-box">
             <div class="arrow left-arrow">&#8249;</div>
             <div class="photo-wrapper"></div>
@@ -51,18 +51,20 @@
         {{/photos}}
     </script>
 
-    <!-- JavaScript to Populate Photos -->
+    <!-- JavaScript for Rendering and Scrolling -->
     <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
     <script>
-        const photos = [
+        // Define the list of photos
+        const photoList = [
             "photo1.jpg",
             "photo2.jpg",
             "photo3.jpg",
             "photo4.jpg"
         ];
 
+        // Render the Mustache template
         const template = document.getElementById('photo-template').innerHTML;
-        const rendered = Mustache.render(template, { photos });
+        const rendered = Mustache.render(template, { photos: photoList });
         document.querySelector('.photo-wrapper').innerHTML = rendered;
 
         // Automatic Scrolling
@@ -88,21 +90,5 @@
         document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
         document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
     </script>
-
-    <!-- Add Photos at the Bottom -->
-    <script>
-        // Define photos here
-        const photoList = [
-            "photo1.jpg",
-            "photo2.jpg",
-            "photo3.jpg",
-            "photo4.jpg"
-        ];
-
-        const updatedTemplate = document.getElementById('photo-template').innerHTML;
-        const renderedPhotos = Mustache.render(updatedTemplate, { photos: photoList });
-        document.querySelector('.photo-wrapper').innerHTML = renderedPhotos;
-    </script>
 </body>
 </html>
-
