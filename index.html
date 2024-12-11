@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eric's Place</title>
-    <!-- Link to the CSS file -->
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Inline CSS for Background Image */
+        /* Background Image Styling */
         body {
-            background-image: url('images/Eric\'s Place background v.1.png'); /* Update path if needed */
-            background-size: cover; /* Ensures the image covers the entire screen */
-            background-attachment: fixed; /* Prevents scrolling the background */
-            background-position: center; /* Centers the image */
+            background-image: url('images/Eric\'s Place background v.1.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
             background-repeat: no-repeat;
         }
     </style>
@@ -28,22 +27,20 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Profile Container -->
-    <div class="profile-container">
-        <div class="banner-name">
-            Eric Bozoian
-        </div>
-        <div class="profile-section">
-            <img src="images/800x800%20profile%20photo.png" alt="Profile Photo" class="profile-photo">
-        </div>
-    </div>
-
-    <!-- Scrolling Photo Box -->
+    <!-- Main Content -->
     <div class="main-content">
+        <!-- Profile Container -->
+        <div class="profile-container">
+            <div class="banner-name">Eric Bozoian</div>
+            <div class="profile-section">
+                <img src="images/800x800%20profile%20photo.png" alt="Profile Photo" class="profile-photo">
+            </div>
+        </div>
+
         <!-- Scrolling Photo Box -->
         <div class="photo-box">
             <div class="arrow left-arrow">&#8249;</div> <!-- Left Arrow -->
-            <div class="photo-wrapper"></div> <!-- Photos will be rendered here -->
+            <div class="photo-wrapper"></div> <!-- Photos will render here -->
             <div class="arrow right-arrow">&#8250;</div> <!-- Right Arrow -->
         </div>
     </div>
@@ -51,7 +48,7 @@
     <!-- Include Mustache Template -->
     <script id="photo-template" type="text/template">
         {{#photos}}
-        <div class="photo middle-photo">
+        <div class="photo">
             <img src="images/image-box-photos/{{.}}" alt="Photo">
         </div>
         {{/photos}}
@@ -73,9 +70,9 @@
         // Automatic Scrolling
         let currentIndex = 0;
         const photoWrapper = document.querySelector('.photo-wrapper');
-        const photos = Array.from(document.querySelectorAll('.photo'));
 
         function scrollPhotos(direction) {
+            const photos = Array.from(document.querySelectorAll('.photo'));
             if (direction === 'left') {
                 currentIndex = (currentIndex === 0) ? photos.length - 1 : currentIndex - 1;
             } else {
@@ -85,7 +82,8 @@
         }
 
         function updatePhotos() {
-            photoWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            const offset = currentIndex * -100;
+            photoWrapper.style.transform = `translateX(${offset}%)`;
         }
 
         setInterval(() => scrollPhotos('right'), 3000);
