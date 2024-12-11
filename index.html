@@ -94,10 +94,9 @@ function updatePhotos() {
     });
 
     // Update wrapper position for scrolling effect
-    const offset = (currentIndex - 1) * -33.33;
+    const offset = (currentIndex - 1) * -33.33; /* Ensures only 3 photos are visible */
     document.querySelector('.photo-wrapper').style.transform = `translateX(${offset}%)`;
 }
-
 function scrollPhotos(direction) {
     const photos = document.querySelectorAll('.photo');
     if (direction === 'left') {
