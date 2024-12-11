@@ -34,10 +34,12 @@
             </div>
         </div>
 
-        <!-- Photo Box -->
+        <!-- Scrolling Photo Box -->
         <div class="photo-box">
             <div class="arrow left-arrow">&#8249;</div>
-            <div class="photo-wrapper"></div>
+            <div class="photo-wrapper">
+                <!-- Photos will be dynamically inserted here -->
+            </div>
             <div class="arrow right-arrow">&#8250;</div>
         </div>
     </div>
@@ -51,20 +53,19 @@
         {{/photos}}
     </script>
 
-    <!-- JavaScript for Rendering and Scrolling -->
+    <!-- JavaScript to Populate Photos -->
     <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
     <script>
-        // Define the list of photos
-        const photoList = [
+        const photos = [
             "photo1.jpg",
             "photo2.jpg",
             "photo3.jpg",
-            "photo4.jpg"
+            "photo4.jpg",
+            "photo5.jpg"
         ];
 
-        // Render the Mustache template
         const template = document.getElementById('photo-template').innerHTML;
-        const rendered = Mustache.render(template, { photos: photoList });
+        const rendered = Mustache.render(template, { photos });
         document.querySelector('.photo-wrapper').innerHTML = rendered;
 
         // Automatic Scrolling
@@ -81,7 +82,7 @@
         }
 
         function updatePhotos() {
-            const offset = currentIndex * -100;
+            const offset = currentIndex * -33.33; // Each photo takes 33.33% width
             document.querySelector('.photo-wrapper').style.transform = `translateX(${offset}%)`;
         }
 
