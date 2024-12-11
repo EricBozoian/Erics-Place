@@ -76,27 +76,47 @@
         document.querySelector('.photo-wrapper').innerHTML = rendered;
 
         // Automatic Scrolling
-        let currentIndex = 0;
+       let currentIndex = 1; // Start with the second photo as the middle
 
-        function scrollPhotos(direction) {
-            const photos = Array.from(document.querySelectorAll('.photo'));
-            if (direction === 'left') {
-                currentIndex = (currentIndex === 0) ? photos.length - 1 : currentIndex - 1;
-            } else {
-                currentIndex = (currentIndex === photos.length - 1) ? 0 : currentIndex + 1;
-            }
-            updatePhotos();
+function updatePhotos() {
+    const photos = document.querySelectorAll('.photo');
+    photos.forEach((photo, index) => {
+        // Remove existing classes
+        photo.classList.remove('active', 'left', 'right');
+
+        if (index === currentIndex) {
+            photo.classList.add('active'); // Middle photo
+        } else if (index === (currentIndex - 1 + photos.length) % photos.length) {
+            photo.classList.add('left'); // Left photo
+        } else if (index === (currentIndex + 1) % photos.length) {
+            photo.classList.add('right'); // Right photo
         }
+    });
 
-        function updatePhotos() {
-            const offset = currentIndex * -33.33; // Each photo takes 33.33% width
-            document.querySelector('.photo-wrapper').style.transform = `translateX(${offset}%)`;
-        }
+    // Update wrapper position for scrolling effect
+    const offset = (currentIndex - 1) * -33.33;
+    document.querySelector('.photo-wrapper').style.transform = `translateX(${offset}%)`;
+}
 
-        setInterval(() => scrollPhotos('right'), 3000);
+function scrollPhotos(direction) {
+    const photos = document.querySelectorAll('.photo');
+    if (direction === 'left') {
+        currentIndex = (currentIndex - 1 + photos.length) % photos.length; // Move left
+    } else {
+        currentIndex = (currentIndex + 1) % photos.length; // Move right
+    }
+    updatePhotos();
+}
 
-        document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
-        document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
+// Initial Setup
+updatePhotos();
+
+// Event Listeners for Arrow Controls
+document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
+document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
+
+// Auto-scroll every 3 seconds
+setInterval(() => scrollPhotos('right'), 3000);
     </script>
 </body>
 </html>
