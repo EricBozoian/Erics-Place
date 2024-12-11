@@ -73,25 +73,31 @@ input:focus, textarea:focus {
     border-color: #66ccff; /* Highlight active fields */
     background-color: rgba(255, 255, 255, 1);
 }
-.profile-photo {
-    display: block; /* Ensures the image is treated as a block for alignment */
-    margin-left: 2in; /* Offsets the image by approximately 2 inches from the left */
-    margin-top: 20px; /* Adds some space above the image */
-    width: 180px; /* 20% larger than the original 150px */
-    height: 180px; /* Maintains square aspect ratio */
-    border-radius: 50%; /* Makes the image circular */
-    border: 3px solid #ffffff; /* Optional: Adds a white border for contrast */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth with a shadow */
+/* Profile Container Styling */
+.profile-container {
+    display: flex;
+    flex-direction: column; /* Aligns items vertically */
+    align-items: center; /* Centers both name and photo */
+    margin-top: 60px; /* Adjust spacing from the navigation bar */
 }
+
+/* Banner Name Styling */
 .banner-name {
     font-family: 'Dancing Script', cursive; /* Stylish font */
     font-size: 48px; /* Large size */
     font-weight: bold;
     color: #ffffff; /* White text for contrast */
-    text-align: center; /* Centers the text horizontally */
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
-    position: relative; /* Allows precise placement */
-    margin: 0 auto; /* Center within container */
-    margin-top: 60px; /* Adjusts spacing below the menu bar */
-    margin-bottom: -20px; /* Reduces spacing between the banner and the profile photo */
+    margin-bottom: 10px; /* Adds spacing below the name */
 }
+
+/* Profile Photo Styling (Unchanged from Earlier) */
+.profile-photo {
+    display: block;
+    width: 180px; /* 20% larger */
+    height: 180px; /* Keeps aspect ratio */
+    border-radius: 50%; /* Circular shape */
+    border: 3px solid #ffffff; /* White border for contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
+}
+
