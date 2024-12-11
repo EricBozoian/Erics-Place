@@ -74,12 +74,14 @@ input:focus, textarea:focus {
     background-color: rgba(255, 255, 255, 1);
 }
 .profile-photo {
-    display: block;
-    margin: 20px auto; /* Centers the image */
-    width: 150px; /* Adjust based on preference */
-    height: 150px; /* Matches width for a square image */
+    display: block; /* Ensures the image is treated as a block for alignment */
+    margin-left: 2in; /* Offsets the image by approximately 2 inches from the left */
+    margin-top: 20px; /* Adds some space above the image */
+    width: 180px; /* 20% larger than the original 150px */
+    height: 180px; /* Maintains square aspect ratio */
     border-radius: 50%; /* Makes the image circular */
-    border: 3px solid #ffffff; /* Optional: Adds a white border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Optional: Adds depth */
+    border: 3px solid #ffffff; /* Optional: Adds a white border for contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth with a shadow */
 }
+
 
