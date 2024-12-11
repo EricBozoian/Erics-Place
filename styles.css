@@ -103,25 +103,26 @@ input:focus, textarea:focus {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
 }
 
-/* Main Content Layout */
+/* Layout for Main Content */
 .main-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 80px; /* Space below the navigation bar */
+    margin: 100px auto; /* Space below the navigation bar */
+    max-width: 90%; /* Makes it responsive */
 }
+
 /* Profile Container Styling */
 .profile-container {
     display: flex;
     flex-direction: column;
-    text-align: left;
     width: 300px;
 }
 
 /* Photo Box Styling */
 .photo-box {
-    width: 7in;
-    height: 4in;
+    flex: 1;
+    height: 300px; /* Adjust as needed */
     display: flex;
     align-items: center;
     position: relative;
@@ -140,8 +141,8 @@ input:focus, textarea:focus {
 
 /* Individual Photos */
 .photo {
-    flex: 0 0 33.33%; /* Each photo occupies 1/3 of the box width */
-    opacity: 0.7; /* Slightly dimmer */
+    flex: 0 0 33.33%; /* Each photo takes 1/3 of the box width */
+    opacity: 0.7;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
@@ -151,12 +152,13 @@ input:focus, textarea:focus {
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
-/* Highlight Middle Photo */
-.middle-photo {
-    flex: 0 0 40%; /* Larger middle photo */
-    opacity: 1; /* Full brightness */
-    transform: scale(1.1); /* Slight zoom effect */
+
+/* Highlight Center Photo */
+.photo:nth-child(2) {
+    opacity: 1;
+    transform: scale(1.1);
 }
+
 /* Arrows */
 .arrow {
     position: absolute;
@@ -169,6 +171,7 @@ input:focus, textarea:focus {
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 50%;
     user-select: none;
+    z-index: 100;
 }
 
 .left-arrow {
@@ -183,3 +186,4 @@ input:focus, textarea:focus {
     background-color: rgba(255, 255, 255, 0.8);
     color: #000;
 }
+
