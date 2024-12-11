@@ -73,3 +73,13 @@ input:focus, textarea:focus {
     border-color: #66ccff; /* Highlight active fields */
     background-color: rgba(255, 255, 255, 1);
 }
+.profile-photo {
+    display: block;
+    margin: 20px auto; /* Centers the image */
+    width: 150px; /* Adjust based on preference */
+    height: 150px; /* Matches width for a square image */
+    border-radius: 50%; /* Makes the image circular */
+    border: 3px solid #ffffff; /* Optional: Adds a white border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Optional: Adds depth */
+}
+
