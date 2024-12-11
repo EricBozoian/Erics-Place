@@ -84,12 +84,13 @@ input:focus, textarea:focus {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds depth with a shadow */
 }
 .banner-name {
-    font-family: 'Dancing Script', cursive; /* Stylish, similar to the font in your image */
-    font-size: 48px; /* Large size for prominence */
-    font-weight: bold; /* Adds some presence */
-    color: #ffffff; /* White text for contrast against the background */
-    text-align: center; /* Centers the text */
+    font-family: 'Dancing Script', cursive; /* Stylish font similar to your provided image */
+    font-size: 48px; /* Large size to match design aesthetic */
+    font-weight: bold;
+    color: #ffffff; /* White text for contrast */
+    text-align: center; /* Centers the text horizontally */
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
-    margin-top: 20px; /* Adds spacing below the nav bar */
-    margin-bottom: 20px; /* Adds spacing above the profile photo */
+    margin: 0 auto; /* Centers the banner */
+    margin-top: 20px; /* Spacing from the navigation bar */
+    margin-bottom: -10px; /* Reduces space between banner and profile photo */
 }
