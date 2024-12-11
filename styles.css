@@ -77,7 +77,6 @@ input:focus, textarea:focus {
 .profile-container {
     display: flex;
     flex-direction: column; /* Stacks name above photo */
-    position: absolute; /* Positions the container precisely */
     top: 80px; /* Keeps the distance from the menu bar consistent */
     left: 1in; /* Offsets the container 2 inches from the left */
     text-align: left; /* Ensures content inside is left-aligned */
@@ -106,12 +105,11 @@ input:focus, textarea:focus {
 /* Layout for Main Content */
 .main-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 100px auto; /* Space below the navigation bar */
-    max-width: 90%; /* Makes it responsive */
+    justify-content: space-between; /* Space between profile container and photo box */
+    align-items: center; /* Aligns both elements vertically */
+    margin: 100px auto; /* Adds space below the navigation bar */
+    max-width: 90%; /* Ensures content is responsive */
 }
-
 /* Profile Container Styling */
 .profile-container {
     display: flex;
@@ -119,10 +117,9 @@ input:focus, textarea:focus {
     width: 300px;
 }
 
-/* Photo Box Styling */
 .photo-box {
-    flex: 1;
-    height: 300px; /* Adjust as needed */
+    flex: 1; /* Photo box takes the remaining space */
+    height: 300px; /* Adjust height as needed */
     display: flex;
     align-items: center;
     position: relative;
@@ -132,11 +129,9 @@ input:focus, textarea:focus {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     background-color: rgba(0, 0, 0, 0.5);
 }
-
-/* Wrapper for Photos */
 .photo-wrapper {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out; /* Smooth scrolling effect */
 }
 
 /* Individual Photos */
