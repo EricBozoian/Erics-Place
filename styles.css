@@ -131,12 +131,14 @@ input:focus, textarea:focus {
 }
 .photo-wrapper {
     display: flex;
-    transition: transform 0.5s ease-in-out; /* Smooth horizontal scrolling */
+    justify-content: center;
+    overflow: hidden;
 }
 /* Individual Photos */
 .photo {
-    flex: 0 0 33.33%; /* Each photo takes up 1/3 of the container width */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth size and opacity transitions */
+    flex: 0 0 33.33%;
+    opacity: 0.75;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 .photo img {
     width: 100%;
@@ -146,15 +148,11 @@ input:focus, textarea:focus {
     transition: transform 0.5s ease-in-out;
 }
 /* Highlight Center Photo */
-.photo:nth-child(2) {
-    opacity: 1;
-    transform: scale(1.1);
-}
+.photo:nth-child(2)
 .photo.active {
     opacity: 1; /* Full opacity for the middle photo */
     transform: scale(1); /* Full size for the middle photo */
 }
-
 .photo.left, .photo.right {
     opacity: 0.65; /* 35% reduced opacity for side photos */
     transform: scale(0.75); /* 25% smaller size for side photos */
