@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eric's Place</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-image: url('images/Eric\'s Place background v.1.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -17,6 +26,7 @@
     </nav>
 
     <div class="main-content">
+        <!-- Profile Container -->
         <div class="profile-container">
             <div class="banner-name">Eric Bozoian</div>
             <div class="profile-section">
@@ -24,41 +34,88 @@
             </div>
         </div>
 
-        <div class="photo-box">
-            <div class="arrow left-arrow">&#8249;</div>
-            <div class="photo-wrapper">
-                <div class="photo"><img src="images/photo1.jpg" alt="Photo 1"></div>
-                <div class="photo"><img src="images/photo2.jpg" alt="Photo 2"></div>
-                <div class="photo"><img src="images/photo3.jpg" alt="Photo 3"></div>
-            </div>
-            <div class="arrow right-arrow">&#8250;</div>
+        <!-- Scrolling Photo Box -->
+       <div class="photo-box">
+    <div class="arrow left-arrow">&#8249;</div>
+    <div class="photo-wrapper">
+        <div class="photo" data-index="0">
+            <img src="images/photo1.jpg" alt="Photo 1">
+        </div>
+        <div class="photo" data-index="1">
+            <img src="images/photo2.jpg" alt="Photo 2">
+        </div>
+        <div class="photo" data-index="2">
+            <img src="images/photo3.jpg" alt="Photo 3">
         </div>
     </div>
+    <div class="arrow right-arrow">&#8250;</div>
+</div>
+    </div>
 
+    <!-- Mustache Template -->
+    <script id="photo-template" type="text/template">
+        {{#photos}}
+        <div class="photo">
+            <img src="images/image-box-photos/{{.}}" alt="Photo">
+        </div>
+        {{/photos}}
+    </script>
+
+    <!-- JavaScript to Populate Photos -->
+    <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
     <script>
-        const photos = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg"];
-        let currentPhotos = [0, 1, 2];
+        const photos = [
+            "photo1.jpg",
+            "photo2.jpg",
+            "photo3.jpg",
+            "photo4.jpg"
+        ];
 
-        function updatePhotos() {
-            const photoElements = document.querySelectorAll('.photo img');
-            currentPhotos.forEach((index, i) => {
-                photoElements[i].src = `images/${photos[index]}`;
-            });
+        const template = document.getElementById('photo-template').innerHTML;
+        const rendered = Mustache.render(template, { photos });
+        document.querySelector('.photo-wrapper').innerHTML = rendered;
+
+        // Automatic Scrolling
+       let currentIndex = 1; // Start with the second photo as the middle
+
+function updatePhotos() {
+    const photos = document.querySelectorAll('.photo');
+    photos.forEach((photo, index) => {
+        // Remove existing classes
+        photo.classList.remove('active', 'left', 'right');
+
+        if (index === currentIndex) {
+            photo.classList.add('active'); // Middle photo
+        } else if (index === (currentIndex - 1 + photos.length) % photos.length) {
+            photo.classList.add('left'); // Left photo
+        } else if (index === (currentIndex + 1) % photos.length) {
+            photo.classList.add('right'); // Right photo
         }
+    });
 
-        function scrollPhotos(direction) {
-            if (direction === "right") {
-                currentPhotos = currentPhotos.map(index => (index + 1) % photos.length);
-            } else {
-                currentPhotos = currentPhotos.map(index => (index - 1 + photos.length) % photos.length);
-            }
-            updatePhotos();
-        }
+    // Update wrapper position for scrolling effect
+    const offset = (currentIndex - 1) * -33.33; /* Ensures only 3 photos are visible */
+    document.querySelector('.photo-wrapper').style.transform = `translateX(${offset}%)`;
+}
+function scrollPhotos(direction) {
+    const photos = document.querySelectorAll('.photo');
+    if (direction === 'left') {
+        currentIndex = (currentIndex - 1 + photos.length) % photos.length; // Move left
+    } else {
+        currentIndex = (currentIndex + 1) % photos.length; // Move right
+    }
+    updatePhotos();
+}
 
-        document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
-        document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
+// Initial Setup
+updatePhotos();
 
-        updatePhotos();
+// Event Listeners for Arrow Controls
+document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
+document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
+
+// Auto-scroll every 3 seconds
+setInterval(() => scrollPhotos('right'), 3000);
     </script>
 </body>
 </html>
