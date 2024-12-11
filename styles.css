@@ -79,7 +79,7 @@ input:focus, textarea:focus {
     flex-direction: column; /* Stacks name above photo */
     position: absolute; /* Positions the container precisely */
     top: 80px; /* Keeps the distance from the menu bar consistent */
-    left: 2in; /* Offsets the container 2 inches from the left */
+    left: 1in; /* Offsets the container 2 inches from the left */
     text-align: left; /* Ensures content inside is left-aligned */
 }
 
