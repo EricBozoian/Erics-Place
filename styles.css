@@ -186,3 +186,201 @@ input:focus, textarea:focus {
     background-color: rgba(255, 255, 255, 0.8);
     color: #000;
 }
+/* ==============================
+   BODY & BACKGROUND STYLING
+   ============================== */
+body {
+    background-image: url("images/Eric's Place background v.1.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+}
+
+/* ==============================
+   NAVIGATION BAR
+   ============================== */
+nav {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: #f5f5f5;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 1.2em;
+}
+
+nav a:hover {
+    color: #ffcc66;
+}
+
+/* ==============================
+   MAIN CONTENT LAYOUT
+   ============================== */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 100px auto;
+    max-width: 90%;
+}
+
+/* ==============================
+   PROFILE CONTAINER
+   ============================== */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.banner-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
+}
+
+.profile-photo {
+    display: block;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* ==============================
+   SCROLLING PHOTO BOX
+   ============================== */
+.photo-box {
+    flex: 1;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.photo-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Each photo is 33.33% wide to allow 3 visible frames */
+.photo {
+    flex: 0 0 33.33%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Highlight center photo */
+.photo:nth-child(2) {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.photo.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.photo.left, .photo.right {
+    opacity: 0.65;
+    transform: scale(0.75);
+}
+
+/* Arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    user-select: none;
+    z-index: 100;
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+}
+
+/* ==============================
+   TWO TEXT BOXES
+   ============================== */
+.text-boxes-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 40px; /* Gap above text boxes */
+    max-width: 90%;
+    gap: 20px;        /* Space between the two boxes */
+}
+
+/* Narrow box (on the left) */
+.narrow-box {
+    flex: 0 0 30%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: #f5f5f5;
+}
+
+/* Wide box (on the right) */
+.wide-box {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: #f5f5f5;
+}
+
+/* Headings within boxes */
+.text-boxes-container h2 {
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Paragraph text */
+.text-boxes-container p {
+    color: #dcdcdc;
+}
+
