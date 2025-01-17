@@ -383,4 +383,42 @@ nav a:hover {
 .text-boxes-container p {
     color: #dcdcdc;
 }
+/* --- Import a cursive font from Google Fonts --- */
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+
+/* Heading for the entire blog section (h2) */
+.wide-box h2 {
+    color: #ffffff;
+    margin-bottom: 1em;
+    font-size: 1.8rem;  /* Adjust to your preference */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Container for each blog post */
+.paper-entry {
+    margin-bottom: 2em; /* Adds space after each post */
+}
+
+/* Post Title in a "Dickenson style" cursive font */
+.paper-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;      /* Adjust to your liking */
+    font-weight: 700;       /* Bold for emphasis */
+    margin-bottom: 0.25em;  /* Spacing below the title */
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Post Date in italic style */
+.paper-date {
+    font-style: italic;
+    color: #ffcc66;    /* A highlight color for the date */
+    margin-bottom: 1em;
+}
+
+/* Post Body text */
+.paper-body {
+    color: #dcdcdc;
+    line-height: 1.5;
+}
 
