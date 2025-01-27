@@ -228,9 +228,11 @@ nav a:hover {
    ============================== */
 .boombox-container {
     position: relative;
-    width: 400px;           /* adjust as desired */
-    margin: 40px auto;      /* centers horizontally */
+    width: 400px; /* Keep original width for layout */
+    margin: 40px auto;
     text-align: center;
+    transform: scale(0.8); /* Scale down to 80% (20% smaller) */
+    transform-origin: center; /* Scale from the center */
 }
 
 .boombox-container img {
@@ -263,6 +265,7 @@ nav a:hover {
     background: #eee;
     border-radius: 4px;
 }
+
 .control-buttons button:hover {
     background: #ddd;
 }
