@@ -227,50 +227,56 @@ nav a:hover {
    BOOMBOX CONTAINER
    ============================== */
 .boombox-container {
-    position: relative;
-    width: 400px; /* Keep original width for layout */
-    margin: 0px auto;
-   margin-top: -20px; /* Adjust this value to overlap or shrink the gap */
-    text-align: center;
-    transform: scale(0.8); /* Scale down to 80% (20% smaller) */
-    transform-origin: center; /* Scale from the center */
+    /* Move the boombox up visually */
+    transform: translateY(-1in); /* Moves the boombox up by 1 inch */
+    transform-origin: center; /* Ensures the transform happens from the center */
+
+    /* Center the boombox horizontally */
+    margin: 0 auto; /* Removes any automatic margins that might cause spacing issues */
+    text-align: center; /* Centers text or buttons inside the boombox */
+
+    /* Keep the existing width and scaling */
+    width: 400px; /* Fixed width of the boombox */
+    transform: scale(0.8); /* Keeps the boombox scaled down to 80% size */
 }
 
+/* Style for the boombox image */
 .boombox-container img {
-    display: block;
-    width: 100%;
-    height: auto;
+    display: block; /* Ensures the image is treated as a block element */
+    width: 100%; /* Make the image fill the container width */
+    height: auto; /* Maintain aspect ratio */
 }
 
-/* Tiny, invisible container for the YouTube player */
+/* Hidden YouTube player inside the boombox */
 #player {
-    position: absolute;
+    position: absolute; /* Position it so it doesn’t affect layout */
     top: 0;
     left: 0;
-    width: 1px;
+    width: 1px; /* Tiny size to make it invisible */
     height: 1px;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0; /* Fully hidden */
+    pointer-events: none; /* Prevent user interaction */
 }
 
+/* Play and pause buttons */
 .control-buttons {
-    margin-top: 10px;
+    margin-top: 10px; /* Space between the buttons and the boombox */
 }
 
 .control-buttons button {
-    margin: 0 10px;
-    padding: 8px 16px;
-    font-size: 14px;
-    cursor: pointer;
-    border: 1px solid #333;
-    background: #eee;
-    border-radius: 4px;
-    box-shadow: 0 0 10px 2px #39ff14, 0 0 20px #39ff14; /* Add neon glow */
+    margin: 0 10px; /* Space between buttons */
+    padding: 8px 16px; /* Button size */
+    font-size: 14px; /* Text size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border: 1px solid #333; /* Button border */
+    background: #eee; /* Button background color */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 0 10px 2px #39ff14, 0 0 20px #39ff14; /* Neon glow */
     transition: box-shadow 0.3s ease-in-out; /* Smooth glow effect */
 }
 
 .control-buttons button:hover {
-    background: #ddd;
-    box-shadow: 0 0 15px 5px neonlime; /* Increase glow on hover */
+    background: #ddd; /* Button background on hover */
+    box-shadow: 0 0 15px 5px #39ff14; /* Intensify the glow on hover */
 }
 
