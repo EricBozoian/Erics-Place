@@ -1,43 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Eric's Place</title>
     
-    <!-- Original Stylesheet -->
+    <!-- Link to your single CSS file with ALL design rules -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- (Optional) Additional CSS for Boombox at bottom -->
-    <link rel="stylesheet" href="boombox.css">
-    
-    <!-- YouTube IFrame API Script -->
+    <!-- Load the YouTube IFrame API script -->
     <script src="https://www.youtube.com/iframe_api"></script>
-    
-    <style>
-        /* Inline body background (original) */
-        body {
-            background-image: url('images/Eric\'s Place background v.1.png');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin: 0;
-            padding: 0;
-        }
-        nav {
-            /* Basic nav style for reference */
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-        }
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #333;
-        }
-    </style>
 </head>
 <body>
+    <!-- Fixed Nav Bar at the Top -->
     <nav>
         <a href="#profile">Profile (Home)</a>
         <a href="#Following">Following</a>
@@ -50,12 +25,16 @@
         <a href="#contact">Contact</a>
     </nav>
 
+    <!-- Main Content (profile info + scrolling photos) -->
     <div class="main-content">
         <!-- Profile Container -->
         <div class="profile-container">
             <div class="banner-name">Eric Bozoian</div>
             <div class="profile-section">
-                <img src="images/800x800%20profile%20photo.png" alt="Profile Photo" class="profile-photo">
+                <img 
+                  src="images/800x800 profile photo.png" 
+                  alt="Profile Photo" 
+                  class="profile-photo">
             </div>
         </div>
 
@@ -76,6 +55,23 @@
             <div class="arrow right-arrow">&#8250;</div>
         </div>
     </div>
+    
+    <!-- BOOMBOX BELOW SCROLLING PHOTOS, ABOVE TEXT BOXES -->
+    <div class="boombox-container">
+      <!-- Boombox Image -->
+      <img 
+        src="images/boombox.png" 
+        alt="Boombox Player" />
+      
+      <!-- Hidden YouTube Player -->
+      <div id="player"></div>
+
+      <!-- Play/Pause Controls -->
+      <div class="control-buttons">
+        <button id="playBtn">Play</button>
+        <button id="pauseBtn">Pause</button>
+      </div>
+    </div>
 
     <!-- Two Text Boxes -->
     <div class="text-boxes-container">
@@ -83,8 +79,9 @@
         <div class="narrow-box">
             <h2>A Most Modest Account of Myself</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo 
-                nisi vitae ligula facilisis blandit. Phasellus fermentum semper leo.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Praesent commodo nisi vitae ligula facilisis blandit. 
+                Phasellus fermentum semper leo.
             </p>
         </div>
 
@@ -98,9 +95,10 @@
                 <h3 class="paper-title">A Return to Autumn</h3>
                 <p class="paper-date">October 7th, 2025, Monday</p>
                 <p class="paper-body">
-                    Mauris accumsan tortor eu sollicitudin aliquet. Vestibulum ante ipsum 
-                    primis in faucibus orci luctus et ultrices posuere cubilia curae; 
-                    Cras nec metus aliquet, faucibus arcu sed, auctor est.
+                    Mauris accumsan tortor eu sollicitudin aliquet. 
+                    Vestibulum ante ipsum primis in faucibus orci luctus 
+                    et ultrices posuere cubilia curae; Cras nec metus aliquet, 
+                    faucibus arcu sed, auctor est.
                 </p>
             </div>
 
@@ -114,12 +112,10 @@
                     eu dignissim tellus leo a tortor.
                 </p>
             </div>
-
-            <!-- More .paper-entry blocks as needed -->
         </div>
     </div>
 
-    <!-- Mustache Template -->
+    <!-- Mustache Template (for photo box) -->
     <script id="photo-template" type="text/template">
         {{#photos}}
         <div class="photo">
@@ -128,97 +124,61 @@
         {{/photos}}
     </script>
 
-    <!-- JavaScript to Populate Photos -->
+    <!-- Mustache & Slideshow Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
     <script>
-        const photos = [
-            "photo1.jpg",
-            "photo2.jpg",
-            "photo3.jpg",
-            "photo4.jpg"
-        ];
-
+        // Populate Photo Box using Mustache
+        const photos = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg"];
         const template = document.getElementById('photo-template').innerHTML;
         const rendered = Mustache.render(template, { photos });
         document.querySelector('.photo-wrapper').innerHTML = rendered;
 
         // Automatic Scrolling
-        let currentIndex = 1; // Start with the second photo as the middle
-
+        let currentIndex = 1; // start with the second photo
         function updatePhotos() {
-            const photos = document.querySelectorAll('.photo');
-            photos.forEach((photo, index) => {
-                // Remove existing classes
+            const photoEls = document.querySelectorAll('.photo');
+            photoEls.forEach((photo, index) => {
                 photo.classList.remove('active', 'left', 'right');
-
                 if (index === currentIndex) {
-                    photo.classList.add('active'); // Middle photo
-                } else if (index === (currentIndex - 1 + photos.length) % photos.length) {
-                    photo.classList.add('left'); // Left photo
-                } else if (index === (currentIndex + 1) % photos.length) {
-                    photo.classList.add('right'); // Right photo
+                    photo.classList.add('active'); // center
+                } else if (index === (currentIndex - 1 + photoEls.length) % photoEls.length) {
+                    photo.classList.add('left');  // left side
+                } else if (index === (currentIndex + 1) % photoEls.length) {
+                    photo.classList.add('right'); // right side
                 }
             });
-
-            // Update wrapper position for scrolling effect
-            const offset = (currentIndex - 1) * -33.33; /* 3 photos visible */
+            // shift the wrapper left/right
+            const offset = (currentIndex - 1) * -33.33;
             document.querySelector('.photo-wrapper').style.transform = `translateX(${offset}%)`;
         }
-
         function scrollPhotos(direction) {
-            const photos = document.querySelectorAll('.photo');
+            const photoEls = document.querySelectorAll('.photo');
             if (direction === 'left') {
-                currentIndex = (currentIndex - 1 + photos.length) % photos.length; // Move left
+                currentIndex = (currentIndex - 1 + photoEls.length) % photoEls.length;
             } else {
-                currentIndex = (currentIndex + 1) % photos.length; // Move right
+                currentIndex = (currentIndex + 1) % photoEls.length;
             }
             updatePhotos();
         }
-
-        // Initial Setup
         updatePhotos();
-
-        // Event Listeners for Arrow Controls
         document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
         document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
-
-        // Auto-scroll every 3 seconds
         setInterval(() => scrollPhotos('right'), 3000);
     </script>
 
-    <!-- ============================================== -->
-    <!-- BOOMBOX SECTION AT BOTTOM -->
-    <!-- ============================================== -->
-    <div class="boombox-container">
-      <!-- Boombox Image -->
-      <img 
-        src="images/boombox.png" 
-        alt="Boombox Player">
-      
-      <!-- Hidden YouTube Player -->
-      <div id="player"></div>
-
-      <!-- Simple Play/Pause Buttons -->
-      <div class="control-buttons">
-        <button id="playBtn">Play</button>
-        <button id="pauseBtn">Pause</button>
-      </div>
-    </div>
-
+    <!-- YouTube IFrame API + Boombox Controls -->
     <script>
-      // Global reference to the player
-      let player;
+      let player; // global player ref
 
-      // Called automatically by the IFrame API once ready
+      // Called by the IFrame API automatically
       function onYouTubeIframeAPIReady() {
-        // Create a new YouTube player in the #player div
         player = new YT.Player('player', {
-          videoId: 'ezoOnI95BpE', // from: https://www.youtube.com/watch?v=ezoOnI95BpE
+          videoId: 'ezoOnI95BpE', // your YouTube video
           playerVars: {
-            autoplay: 1, // Attempt to autoplay
-            mute: 0,     // Unmuted (browsers may block this)
-            controls: 0, // Hide native YouTube controls
-            rel: 0       // Disable related videos at the end
+            autoplay: 1, // try to autoplay
+            mute: 0,     // unmuted (may be blocked by browser)
+            controls: 0, // hide YT controls
+            rel: 0       // no related videos
           },
           events: {
             'onReady': onPlayerReady
@@ -227,20 +187,16 @@
       }
 
       function onPlayerReady(event) {
-        // Attempt to start unmuted playback
-        event.target.playVideo();
+        event.target.playVideo(); 
       }
 
       document.addEventListener('DOMContentLoaded', () => {
         const playBtn = document.getElementById('playBtn');
         const pauseBtn = document.getElementById('pauseBtn');
-
-        // Play button
+        
         playBtn.addEventListener('click', () => {
           player.playVideo();
         });
-
-        // Pause button
         pauseBtn.addEventListener('click', () => {
           player.pauseVideo();
         });
@@ -248,3 +204,4 @@
     </script>
 </body>
 </html>
+
