@@ -43,10 +43,13 @@ nav a:hover {
    ============================== */
 .main-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 100px auto; /* space below the fixed nav */
-    max-width: 90%;
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center-align elements horizontally */
+    justify-content: flex-start; /* Align items at the top */
+    margin: 0 auto; /* Remove unnecessary space */
+    padding: 0; /* Ensure no internal padding */
+    max-width: 90%; /* Keep the content width constrained */
+    gap: 20px; /* Optional: Controlled spacing between child elements */
 }
 
 /* ==============================
