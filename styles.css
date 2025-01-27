@@ -230,8 +230,8 @@ nav a:hover {
     position: relative;
     width: 200px; /* Set the container width */
     height: 207.81px; /* Set the container height */
-    margin: 40px auto;      /* centers horizontally */
-    text-align: center;
+    margin: 40px auto 0.5in auto; /* Adjust bottom margin to 1/4 inch larger */
+    text-align: center; /* Centers content inside */
 }
 
 .boombox-container img {
