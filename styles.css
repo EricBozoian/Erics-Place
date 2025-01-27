@@ -229,7 +229,8 @@ nav a:hover {
 .boombox-container {
     position: relative; /* Allows for top adjustment */
     top: -1in; /* Moves the boombox up by 1 inch */
-    margin: 0 auto; /* Centers the boombox horizontally */
+    margin: 0 auto; /* Centers the boombox horizontally with no extra space */
+    padding: 0; /* Removes padding inside the container */
     text-align: center; /* Centers text/buttons inside */
     z-index: 10; /* Ensures it's above other elements */
 
