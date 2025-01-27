@@ -236,9 +236,10 @@ nav a:hover {
 
 /* Style for the boombox image */
 .boombox-container img {
-    display: block; /* Ensures the image is treated as a block element */
-    width: 100%; /* Make the image fill the container width */
-    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevents extra spacing from inline elements */
+    max-width: 100%; /* Ensures the image never exceeds its container's width */
+    height: auto; /* Maintains the aspect ratio */
+    width: auto; /* Ensures the image uses its natural width */
 }
 
 /* Hidden YouTube player inside the boombox */
