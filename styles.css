@@ -253,7 +253,6 @@ nav a:hover {
 
 .control-buttons {
     margin-top: 10px;
-    margin-bottom: 0.25in; /* Adds 1/4 inch space below the buttons */
 }
 
 .control-buttons button {
