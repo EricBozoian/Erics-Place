@@ -229,7 +229,7 @@ nav a:hover {
 .boombox-container {
     position: relative;
     width: 400px; /* Keep original width for layout */
-    margin: 40px auto;
+    margin: 10px auto;
     text-align: center;
     transform: scale(0.8); /* Scale down to 80% (20% smaller) */
     transform-origin: center; /* Scale from the center */
