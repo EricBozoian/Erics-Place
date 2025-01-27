@@ -281,7 +281,10 @@ nav a:hover {
 }
 
 * {
-    outline: 2px solid rgba(255, 255, 0, 0.5); /* Translucent yellow outlines */
+    background-clip: content-box; /* Only highlight content, not padding or borders */
+    background-color: rgba(255, 255, 0, 0.2); /* Light translucent yellow for content */
+    outline: 2px solid rgba(255, 0, 0, 0.5); /* Red outline to see element boundaries */
 }
+
 
 
