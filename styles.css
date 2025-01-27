@@ -45,7 +45,7 @@ nav a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 100px auto; /* space below the fixed nav */
+    margin: 100px auto 0 auto; /* Removes bottom margin, keeps top and side margins */
     max-width: 90%;
 }
 
