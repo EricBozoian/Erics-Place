@@ -21,6 +21,7 @@ body {
 nav {
     background-color: rgba(0, 0, 0, 0.8); /* black semi-transparent */
     padding: 10px 20px;
+    position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000; /* ensures nav is on top */
@@ -42,13 +43,10 @@ nav a:hover {
    ============================== */
 .main-content {
     display: flex;
-    flex-direction: column; /* Stack child elements vertically */
-    align-items: center; /* Center-align elements horizontally */
-    justify-content: flex-start; /* Align items at the top */
-   margin: 0 auto; /* Remove unnecessary space */
-    padding: 0; /* Ensure no internal padding */
-    max-width: 90%; /* Keep the content width constrained */
-    gap: 20px; /* Optional: Controlled spacing between child elements */
+    justify-content: space-between;
+    align-items: center;
+    margin: 100px auto; /* space below the fixed nav */
+    max-width: 90%;
 }
 
 /* ==============================
@@ -162,7 +160,7 @@ nav a:hover {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    margin-top: 0px; 
+    margin-top: 40px; 
     max-width: 90%;
     gap: 20px;
 }
@@ -229,59 +227,43 @@ nav a:hover {
    BOOMBOX CONTAINER
    ============================== */
 .boombox-container {
-    position: relative; /* Allows for top adjustment */
-    top: -2in; /* Moves the boombox up by 1 inch */
-    margin: 0 auto; /* Centers the boombox horizontally with no extra space */
-    padding: 0; /* Removes padding inside the container */
-    text-align: center; /* Centers text/buttons inside */
-    z-index: 10; /* Ensures it's above other elements */
-
-    /* Scale the entire container by 50% */
-    transform: scale(0.5); /* Scales the boombox down to 50% size */
-    transform-origin: center; /* Ensures the scaling happens from the center */
+    position: relative;
+    width: 400px;           /* adjust as desired */
+    margin: 40px auto;      /* centers horizontally */
+    text-align: center;
 }
 
-/* Style for the boombox image */
 .boombox-container img {
-    display: block; /* Prevents extra spacing from inline elements */
-    max-width: 100%; /* Ensures the image never exceeds its container's width */
-    height: auto; /* Maintains the aspect ratio */
-    width: auto; /* Ensures the image uses its natural width */
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
-/* Hidden YouTube player inside the boombox */
+/* Tiny, invisible container for the YouTube player */
 #player {
-    position: absolute; /* Position it so it doesn’t affect layout */
+    position: absolute;
     top: 0;
     left: 0;
-    width: 1px; /* Tiny size to make it invisible */
+    width: 1px;
     height: 1px;
-    opacity: 0; /* Fully hidden */
-    pointer-events: none; /* Prevent user interaction */
+    opacity: 0;
+    pointer-events: none;
 }
 
-/* Play and pause buttons */
 .control-buttons {
-    margin-top: 10px; /* Space between the buttons and the boombox */
+    margin-top: 10px;
 }
 
 .control-buttons button {
-    margin: 0 10px; /* Space between buttons */
-    padding: 8px 16px; /* Button size */
-    font-size: 14px; /* Text size */
-    cursor: pointer; /* Pointer cursor on hover */
-    border: 1px solid #333; /* Button border */
-    background: #eee; /* Button background color */
-    border-radius: 4px; /* Rounded corners */
-    box-shadow: 0 0 10px 2px #39ff14, 0 0 20px #39ff14; /* Neon glow */
-    transition: box-shadow 0.3s ease-in-out; /* Smooth glow effect */
+    margin: 0 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #333;
+    background: #eee;
+    border-radius: 4px;
 }
-
 .control-buttons button:hover {
-    background: #ddd; /* Button background on hover */
-    box-shadow: 0 0 15px 5px #39ff14; /* Intensify the glow on hover */
+    background: #ddd;
 }
-
-
-
 
