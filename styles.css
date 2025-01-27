@@ -232,6 +232,10 @@ nav a:hover {
     margin: 0 auto; /* Centers the boombox horizontally */
     text-align: center; /* Centers text/buttons inside */
     z-index: 10; /* Ensures it's above other elements */
+
+    /* Scale the entire container by 50% */
+    transform: scale(0.5); /* Scales the boombox down to 50% size */
+    transform-origin: center; /* Ensures the scaling happens from the center */
 }
 
 /* Style for the boombox image */
