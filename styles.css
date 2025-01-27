@@ -21,7 +21,6 @@ body {
 nav {
     background-color: rgba(0, 0, 0, 0.8); /* black semi-transparent */
     padding: 10px 20px;
-    position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000; /* ensures nav is on top */
@@ -46,7 +45,6 @@ nav a:hover {
     flex-direction: column; /* Stack child elements vertically */
     align-items: center; /* Center-align elements horizontally */
     justify-content: flex-start; /* Align items at the top */
-    margin: 0 auto; /* Remove unnecessary space */
     padding: 0; /* Ensure no internal padding */
     max-width: 90%; /* Keep the content width constrained */
     gap: 20px; /* Optional: Controlled spacing between child elements */
@@ -231,7 +229,7 @@ nav a:hover {
    ============================== */
 .boombox-container {
     position: relative; /* Allows for top adjustment */
-    top: -1in; /* Moves the boombox up by 1 inch */
+    top: -2in; /* Moves the boombox up by 1 inch */
     margin: 0 auto; /* Centers the boombox horizontally with no extra space */
     padding: 0; /* Removes padding inside the container */
     text-align: center; /* Centers text/buttons inside */
@@ -283,11 +281,6 @@ nav a:hover {
     box-shadow: 0 0 15px 5px #39ff14; /* Intensify the glow on hover */
 }
 
-* {
-    background-clip: content-box; /* Only highlight content, not padding or borders */
-    background-color: rgba(255, 255, 0, 0.2); /* Light translucent yellow for content */
-    outline: 2px solid rgba(255, 0, 0, 0.5); /* Red outline to see element boundaries */
-}
 
 
 
