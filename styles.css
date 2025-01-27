@@ -262,6 +262,9 @@ nav a:hover {
     border: 1px solid #333;
     background: #eee;
     border-radius: 4px;
+   box-shadow: 0 0 10px 2px #39ff14, 0 0 20px #39ff14; /* Neon glow */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth glow effect */
+
 }
 .control-buttons button:hover {
     background: #ddd;
