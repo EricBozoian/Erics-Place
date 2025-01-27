@@ -264,7 +264,7 @@ nav a:hover {
     border: 1px solid #333;
     background: #eee;
     border-radius: 4px;
-    box-shadow: 0 0 10px 2px neongreen, 0 0 20px neongreen; /* Add neon glow */
+    box-shadow: 0 0 10px 2px #39ff14, 0 0 20px #39ff14; /* Add neon glow */
     transition: box-shadow 0.3s ease-in-out; /* Smooth glow effect */
 }
 
