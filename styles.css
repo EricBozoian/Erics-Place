@@ -160,7 +160,7 @@ nav a:hover {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    margin-top: 20px; 
+    margin-top: 0px; 
     max-width: 90%;
     gap: 20px;
 }
@@ -229,7 +229,7 @@ nav a:hover {
 .boombox-container {
     position: relative;
     width: 400px; /* Keep original width for layout */
-    margin: 10px auto;
+    margin: 0px auto;
     text-align: center;
     transform: scale(0.8); /* Scale down to 80% (20% smaller) */
     transform-origin: center; /* Scale from the center */
