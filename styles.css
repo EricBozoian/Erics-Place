@@ -228,9 +228,15 @@ nav a:hover {
    ============================== */
 .boombox-container {
     position: relative;
-    width: 400px;           /* adjust as desired */
-    margin: 40px auto;      /* centers horizontally */
-    text-align: center;
+    top: -1in; /* Moves the container up */
+    margin: 0 auto; /* Removes all margins and centers the container */
+    padding: 0; /* Removes any internal padding */
+    text-align: center; /* Centers buttons inside */
+    z-index: 10; /* Keeps it above other elements */
+
+    width: auto; /* Let the container width adjust based on content */
+    height: auto; /* Let the container height adjust based on content */
+    overflow: hidden; /* Prevents overflow content */
 }
 
 .boombox-container img {
