@@ -240,16 +240,16 @@ nav a:hover {
     height: 206.81px; /* Set the image height */
 }
 
-/* Tiny, invisible container for the YouTube player */
+/* YouTube player inside the boombox */
 #player {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-}
+    top: 50%;  /* Adjust this to position the video properly */
+    left: 50%;
+    width: 80%; /* Adjust the width to fit within the "cassette" area */
+    height: 40%; /* Adjust the height to fit inside the boombox */
+    transform: translate(-50%, -50%);
+    background: black; /* Helps it blend in */
+    border: 2px solid #333; 
 
 .control-buttons {
     margin-top: 10px;
