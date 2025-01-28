@@ -294,7 +294,7 @@ body {
 
 /* Header Section */
 .newsfeed-header {
-   margin-top: 2in; /* Add spacing from the top navigation bar */
+   margin-top: 1in; /* Add spacing from the top navigation bar */
     text-align: center;
     background-color: rgba(0, 0, 0, 0.7); /* Transparent dark background */
     padding: 20px 0;
