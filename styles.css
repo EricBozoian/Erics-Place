@@ -228,16 +228,16 @@ nav a:hover {
    ============================== */
 .boombox-container {
     position: relative;
-    width: 200px; /* Set the container width */
-    height: 207.81px; /* Set the container height */
+    width: 248px; /* Set the container width */
+    height: 255.81px; /* Set the container height */
     margin: 40px auto 0.5in auto; /* Adjust bottom margin to 1/4 inch larger */
     text-align: center; /* Centers content inside */
 }
 
 .boombox-container img {
     display: block;
-    width: 200px; /* Set the image width */
-    height: 206.81px; /* Set the image height */
+    width: 248px; /* Set the image width */
+    height: 254.81px; /* Set the image height */
 }
 
 /* YouTube player inside the boombox */
