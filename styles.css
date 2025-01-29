@@ -260,7 +260,7 @@ nav a:hover {
     transform: translate(-50%, -50%);
     background: black; /* Helps it blend in */
     border: 2px solid #333; 
-
+}
 .control-buttons {
     margin-top: 10px;
 }
