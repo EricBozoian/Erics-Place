@@ -3,8 +3,8 @@
    ============================== */
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
 
+/* 1) Universal body styling (NO background-image here) */
 body {
-    background-image: url("images/Eric\'s Place background v.1.png"); /* or your forest image */
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -13,6 +13,16 @@ body {
     padding: 0;
     color: #f5f5f5;
     font-family: 'Arial', sans-serif;
+}
+
+/* 2) Home page class (example) */
+.home-page {
+    background-image: url("images/Eric's Place background v.1.png");
+}
+
+/* 3) Following page class */
+.following-page {
+    background-image: url("images/following background 2.png");
 }
 
 /* ==============================
@@ -282,16 +292,6 @@ nav a:hover {
     box-sizing: border-box;
 }
 
-/* Body and Background */
-body {
-    font-family: Arial, sans-serif;
-    background-image: url('following-back-ground.jpg'); /* Add your background image */
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    color: #fff;
-}
-
 /* Header Section */
 .newsfeed-header {
    margin-top: 1in; /* Add spacing from the top navigation bar */
@@ -340,12 +340,4 @@ body {
 ============================= */
 .following-page {
     background-image: url("images/following background 2.png"); /* Replace with your actual image path */
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    color: #f5f5f5;
-    font-family: 'Arial', sans-serif;
 }
