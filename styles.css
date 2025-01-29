@@ -306,32 +306,34 @@ body {
 
 /* Main Newsfeed Section */
 .newsfeed-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    min-height: 80vh; /* Ensures it takes up most of the viewport */
+    display: flex; /* Makes the content align in a flexible layout */
+    justify-content: center; /* Centers the feed horizontally */
+    align-items: center; /* Centers the feed vertically */
+    padding: 20px; /* Adds space inside the section to prevent crowding */
+    min-height: 80vh; /* Ensures it takes up 80% of the screen height */
 }
 
+/* The container that holds the RSS feed */
 .rss-widget-container {
-    position: relative;
-    width: 9in; /* Set the container width to 9 inches */
-    height: 8in; /* Set the container height to 8 inches */
+    position: relative; /* Allows better control over placement */
+    width: 864px; /* 9 inches wide (9 * 96 pixels per inch) */
+    height: 576px; /* 6 inches tall (6 * 96 pixels per inch) */
     margin: 0 auto; /* Centers the container horizontally */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Ensures content stays within the bounds */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add a soft shadow effect */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    border-radius: 10px; /* Rounds the corners slightly for a smooth look */
+    overflow: auto; /* Enables scrolling when content overflows */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow effect */
+    display: flex; /* Uses flexbox for better internal alignment */
+    justify-content: center; /* Centers content inside */
+    align-items: flex-start; /* Aligns items at the top */
+    padding: 10px; /* Adds space inside */
 }
 
-/* Ensure the iframe takes up the full space of the container */
+/* The iframe that loads the RSS feed */
 .rss-widget {
-    width: 100%;
-    height: 100%;
-    border: none; /* Removes iframe borders */
+    width: 100%; /* Makes the feed take up the full width of the container */
+    height: 100%; /* Makes the feed take up the full height */
+    border: none; /* Removes unwanted borders around the feed */
 }
 /* ============================
    FOLLOWING PAGE STYLES
