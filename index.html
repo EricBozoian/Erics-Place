@@ -7,11 +7,11 @@
     
     <!-- Link to your single CSS file with ALL design rules -->
     <link rel="stylesheet" href="styles.css">
-<body class="home-page">
+    
     <!-- Load the YouTube IFrame API script -->
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
-<body>
+<body class="home-page">
     <!-- Fixed Nav Bar at the Top -->
     <nav>
         <a href="#profile">Profile (Home)</a>
@@ -41,27 +41,27 @@
         <!-- Scrolling Photo Box -->
         <div class="photo-box">
             <div class="arrow left-arrow">&#8249;</div>
-            <div class="photo-wrapper">
+            <div class="photo-wrapper"></div>
             <div class="arrow right-arrow">&#8250;</div>
         </div>
     </div>
     
     <!-- BOOMBOX BELOW SCROLLING PHOTOS, ABOVE TEXT BOXES -->
     <div class="boombox-container">
-    <!-- Boombox Image as Background -->
-    <div class="boombox-frame">
-        <img src="images/boombox.png" alt="Boombox Player" />
-        
-        <!-- YouTube Player inside the Boombox -->
-        <div id="player"></div>
-    </div>
+        <!-- Boombox Image as Background -->
+        <div class="boombox-frame">
+            <img src="images/boombox.png" alt="Boombox Player" />
+            
+            <!-- YouTube Player inside the Boombox -->
+            <div id="player"></div>
+        </div>
 
-    <!-- Play/Pause Controls -->
-    <div class="control-buttons">
-        <button id="playBtn">Play</button>
-        <button id="pauseBtn">Pause</button>
+        <!-- Play/Pause Controls -->
+        <div class="control-buttons">
+            <button id="playBtn">Play</button>
+            <button id="pauseBtn">Pause</button>
+        </div>
     </div>
-</div>
 
     <!-- Two Text Boxes -->
     <div class="text-boxes-container">
@@ -105,20 +105,12 @@
         </div>
     </div>
 
-    <!-- Mustache Template (for photo box) -->
+    <!-- Mustache.js Template for Photos -->
     <script id="photo-template" type="text/template">
         {{#photos}}
         <div class="photo">
+            <!-- Adjust path if your images are in a subfolder -->
             <img src="images/image-box-photos/{{.}}" alt="Photo">
-        </div>
-        {{/photos}}
-    </script>
-
-     <!-- Mustache.js Template for Photos -->
-    <script id="photo-template" type="text/template">
-        {{#photos}}
-        <div class="photo">
-            <img src="images/{{.}}" alt="Photo">
         </div>
         {{/photos}}
     </script>
@@ -184,7 +176,6 @@
             document.querySelector(".right-arrow").addEventListener("click", () => scrollPhotos("right"));
 
             setInterval(() => scrollPhotos("right"), 3000);
-
             updatePhotos();
         });
     </script>
@@ -231,5 +222,3 @@
 
 </body>
 </html>
-
-
