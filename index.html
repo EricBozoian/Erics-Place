@@ -7,11 +7,11 @@
     
     <!-- Link to your single CSS file with ALL design rules -->
     <link rel="stylesheet" href="styles.css">
-    
+<body class="home-page">
     <!-- Load the YouTube IFrame API script -->
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
-<body class="home-page">
+<body>
     <!-- Fixed Nav Bar at the Top -->
     <nav>
         <a href="#profile">Profile (Home)</a>
@@ -41,27 +41,37 @@
         <!-- Scrolling Photo Box -->
         <div class="photo-box">
             <div class="arrow left-arrow">&#8249;</div>
-            <div class="photo-wrapper"></div>
+            <div class="photo-wrapper">
+                <div class="photo" data-index="0">
+                    <img src="images/photo1.jpg" alt="Photo 1">
+                </div>
+                <div class="photo" data-index="1">
+                    <img src="images/photo2.jpg" alt="Photo 2">
+                </div>
+                <div class="photo" data-index="2">
+                    <img src="images/photo3.jpg" alt="Photo 3">
+                </div>
+            </div>
             <div class="arrow right-arrow">&#8250;</div>
         </div>
     </div>
     
     <!-- BOOMBOX BELOW SCROLLING PHOTOS, ABOVE TEXT BOXES -->
     <div class="boombox-container">
-        <!-- Boombox Image as Background -->
-        <div class="boombox-frame">
-            <img src="images/boombox.png" alt="Boombox Player" />
-            
-            <!-- YouTube Player inside the Boombox -->
-            <div id="player"></div>
-        </div>
-
-        <!-- Play/Pause Controls -->
-        <div class="control-buttons">
-            <button id="playBtn">Play</button>
-            <button id="pauseBtn">Pause</button>
-        </div>
+    <!-- Boombox Image as Background -->
+    <div class="boombox-frame">
+        <img src="images/boombox.png" alt="Boombox Player" />
+        
+        <!-- YouTube Player inside the Boombox -->
+        <div id="player"></div>
     </div>
+
+    <!-- Play/Pause Controls -->
+    <div class="control-buttons">
+        <button id="playBtn">Play</button>
+        <button id="pauseBtn">Pause</button>
+    </div>
+</div>
 
     <!-- Two Text Boxes -->
     <div class="text-boxes-container">
@@ -105,120 +115,96 @@
         </div>
     </div>
 
-    <!-- Mustache.js Template for Photos -->
+    <!-- Mustache Template (for photo box) -->
     <script id="photo-template" type="text/template">
         {{#photos}}
         <div class="photo">
-            <!-- Adjust path if your images are in a subfolder -->
             <img src="images/image-box-photos/{{.}}" alt="Photo">
         </div>
         {{/photos}}
     </script>
 
-    <!-- Mustache.js Library -->
+    <!-- Mustache & Slideshow Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
-
-    <!-- JavaScript for Mustache & Slideshow -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Photo List (Just Add Filenames Here)
-            const photos = [
-                "photo1.jpg",
-                "photo2.jpg",
-                "photo3.jpg",
-                "photo4.jpg",
-                "photo5.jpg",
-                "photo6.jpg",
-                "photo7.jpg",
-                "photo8.jpg",
-                "photo9.jpg"
-            ];
+        // Populate Photo Box using Mustache
+        const photos = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg","photo5.jpg","photo6.jpg","photo7.jpg","photo8.jpg","photo9.jpg"];
+        const template = document.getElementById('photo-template').innerHTML;
+        const rendered = Mustache.render(template, { photos });
+        document.querySelector('.photo-wrapper').innerHTML = rendered;
 
-            // Mustache.js Rendering
-            const template = document.getElementById("photo-template").innerHTML;
-            const photoWrapper = document.querySelector(".photo-wrapper");
-
-            if (photoWrapper) {
-                photoWrapper.innerHTML = Mustache.render(template, { photos });
-            }
-
-            // === Auto Scrolling Logic ===
-            let currentIndex = 1;
-
-            function updatePhotos() {
-                const photoEls = document.querySelectorAll(".photo");
-                photoEls.forEach((photo, index) => {
-                    photo.classList.remove("active", "left", "right");
-                    if (index === currentIndex) {
-                        photo.classList.add("active");
-                    } else if (index === (currentIndex - 1 + photoEls.length) % photoEls.length) {
-                        photo.classList.add("left");
-                    } else if (index === (currentIndex + 1) % photoEls.length) {
-                        photo.classList.add("right");
-                    }
-                });
-
-                const offset = (currentIndex - 1) * -100;
-                document.querySelector(".photo-wrapper").style.transform = `translateX(${offset}%)`;
-            }
-
-            function scrollPhotos(direction) {
-                const photoEls = document.querySelectorAll(".photo");
-                if (direction === "left") {
-                    currentIndex = (currentIndex - 1 + photoEls.length) % photoEls.length;
-                } else {
-                    currentIndex = (currentIndex + 1) % photoEls.length;
+        // Automatic Scrolling
+        let currentIndex = 1; // start with the second photo
+        function updatePhotos() {
+            const photoEls = document.querySelectorAll('.photo');
+            photoEls.forEach((photo, index) => {
+                photo.classList.remove('active', 'left', 'right');
+                if (index === currentIndex) {
+                    photo.classList.add('active'); // center
+                } else if (index === (currentIndex - 1 + photoEls.length) % photoEls.length) {
+                    photo.classList.add('left');  // left side
+                } else if (index === (currentIndex + 1) % photoEls.length) {
+                    photo.classList.add('right'); // right side
                 }
-                updatePhotos();
+            });
+            // shift the wrapper left/right
+            const offset = (currentIndex - 1) * -33.33;
+            document.querySelector('.photo-wrapper').style.transform = `translateX(${offset}%)`;
+        }
+        function scrollPhotos(direction) {
+            const photoEls = document.querySelectorAll('.photo');
+            if (direction === 'left') {
+                currentIndex = (currentIndex - 1 + photoEls.length) % photoEls.length;
+            } else {
+                currentIndex = (currentIndex + 1) % photoEls.length;
             }
-
-            document.querySelector(".left-arrow").addEventListener("click", () => scrollPhotos("left"));
-            document.querySelector(".right-arrow").addEventListener("click", () => scrollPhotos("right"));
-
-            setInterval(() => scrollPhotos("right"), 3000);
             updatePhotos();
-        });
+        }
+        updatePhotos();
+        document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
+        document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
+        setInterval(() => scrollPhotos('right'), 3000);
     </script>
 
-    <!-- YouTube IFrame API & Boombox Controls -->
+    <!-- YouTube IFrame API + Boombox Controls -->
     <script>
-        let player;
+      let player; // global player ref
 
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player("player", {
-                videoId: "ezoOnI95BpE",
-                playerVars: {
-                    autoplay: 1,
-                    mute: 0,
-                    controls: 0,
-                    rel: 0
-                },
-                events: {
-                    "onReady": onPlayerReady
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            event.target.playVideo();
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const playBtn = document.getElementById("playBtn");
-            const pauseBtn = document.getElementById("pauseBtn");
-
-            playBtn.addEventListener("click", () => {
-                player.playVideo();
-            });
-
-            pauseBtn.addEventListener("click", () => {
-                player.pauseVideo();
-            });
-
-            // Automatically start playback
-            playBtn.click();
+      // Called by the IFrame API automatically
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          videoId: 'ezoOnI95BpE', // your YouTube video
+          playerVars: {
+            autoplay: 1, // try to autoplay
+            mute: 0,     // unmuted (may be blocked by browser)
+            controls: 0, // hide YT controls
+            rel: 0       // no related videos
+          },
+          events: {
+            'onReady': onPlayerReady
+          }
         });
-    </script>
+      }
 
+      function onPlayerReady(event) {
+        event.target.playVideo(); 
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        
+        playBtn.addEventListener('click', () => {
+          player.playVideo();
+        });
+        pauseBtn.addEventListener('click', () => {
+          player.pauseVideo();
+        });
+              // Automatically click the Play button when the page loads
+    playBtn.click();
+      });
+    </script>
 </body>
 </html>
+
+
