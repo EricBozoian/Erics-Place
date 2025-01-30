@@ -368,16 +368,19 @@ nav a:hover {
 }
 
 /* Website links inside the box */
-.website-box a {
-    color: #ffffff;
-    font-size: 1.4em; /* Adjust font size for readability */
-    font-weight: bold;
-    text-decoration: none;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+.website-box {
+    width: 384px; /* 4 inches */
+    height: 384px; /* 4 inches */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Hover effect for links */
-.website-box a:hover {
-    color: #ffcc66; /* Change to gold on hover */
+.website-preview {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
+
 
