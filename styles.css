@@ -311,7 +311,6 @@ nav a:hover {
     align-items: center; /* Centers the feed vertically */
     padding: 0px; /* Adds space inside the section to prevent crowding */
     min-height: 80vh; /* Ensures it takes up 80% of the screen height */
-   width: 866px;
 }
 
 /* The container that holds the RSS feed */
