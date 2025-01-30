@@ -335,3 +335,49 @@ nav a:hover {
     height: 100%; /* Makes the feed take up the full height */
     border: none; /* Removes unwanted borders around the feed */
 }
+
+/* ==============================
+   WEBSITE BOXES STYLING
+   ============================== */
+.websites-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between boxes */
+    flex-wrap: wrap; /* Ensures boxes wrap if the screen is small */
+    margin-top: 20px; /* Space from content above */
+}
+
+.website-box {
+    width: 384px; /* 4 inches */
+    height: 384px; /* 4 inches */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Slight border to match theme */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.website-box:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5); /* More pronounced glow */
+}
+
+/* Website links inside the box */
+.website-box a {
+    color: #ffffff;
+    font-size: 1.4em; /* Adjust font size for readability */
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Hover effect for links */
+.website-box a:hover {
+    color: #ffcc66; /* Change to gold on hover */
+}
+
