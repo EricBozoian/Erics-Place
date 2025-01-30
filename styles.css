@@ -309,7 +309,7 @@ nav a:hover {
     display: flex; /* Makes the content align in a flexible layout */
     justify-content: center; /* Centers the feed horizontally */
     align-items: center; /* Centers the feed vertically */
-    padding: 20px; /* Adds space inside the section to prevent crowding */
+    padding: 0px; /* Adds space inside the section to prevent crowding */
     min-height: 80vh; /* Ensures it takes up 80% of the screen height */
 }
 
@@ -326,7 +326,7 @@ nav a:hover {
     display: flex; /* Uses flexbox for better internal alignment */
     justify-content: center; /* Centers content inside */
     align-items: flex-start; /* Aligns items at the top */
-    padding: 10px; /* Adds space inside */
+    padding: 0px; /* Adds space inside */
 }
 
 /* The iframe that loads the RSS feed */
