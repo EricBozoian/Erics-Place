@@ -331,7 +331,7 @@ nav a:hover {
 
 /* The iframe that loads the RSS feed */
 .rss-widget {
-    width: 100%; /* Makes the feed take up the full width of the container */
+   max-width: 864px;    /* the width you actually want */
     height: 100%; /* Makes the feed take up the full height */
     border: none; /* Removes unwanted borders around the feed */
 }
