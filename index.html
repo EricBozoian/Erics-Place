@@ -165,20 +165,6 @@ document.querySelector('.right-arrow').addEventListener('click', () => scrollPho
 // Auto-scroll every 3 seconds
 setInterval(() => scrollPhotos('right'), 3000);
 
-        // Automatic Scrolling
-        let currentIndex = 1; // start with the second photo
-        function updatePhotos() {
-            const photoEls = document.querySelectorAll('.photo');
-            photoEls.forEach((photo, index) => {
-                photo.classList.remove('active', 'left', 'right');
-                if (index === currentIndex) {
-                    photo.classList.add('active'); // center
-                } else if (index === (currentIndex - 1 + photoEls.length) % photoEls.length) {
-                    photo.classList.add('left');  // left side
-                } else if (index === (currentIndex + 1) % photoEls.length) {
-                    photo.classList.add('right'); // right side
-                }
-            });
             // shift the wrapper left/right
             const offset = (currentIndex - 1) * -33.33;
             document.querySelector('.photo-wrapper').style.transform = `translateX(${offset}%)`;
