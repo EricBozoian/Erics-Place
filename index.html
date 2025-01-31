@@ -116,11 +116,23 @@
   <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
   <script>
     // 1) Photos array (using 'photoX.jpg' in images/image-box-photos folder)
-    const photos = [
-      "photo1.jpg", "photo2.jpg", "photo3.jpg",
-      "photo4.jpg", "photo5.jpg", "photo6.jpg",
-      "photo7.jpg", "photo10.jpg", "photo9.jpg"
-    ];
+   // Function to shuffle an array (Fisher-Yates algorithm)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+// Define the photos array
+const photos = [
+   "photo1.jpg", "photo2.jpg", "photo3.jpg",
+   "photo4.jpg", "photo5.jpg", "photo6.jpg",
+   "photo7.jpg", "photo8.jpg", "photo9.jpg"
+];
+
+// Shuffle the photos before rendering
+shuffleArray(photos);
 
     // 2) Render Mustache template into the .photo-wrapper
     const template = document.getElementById('photo-template').innerHTML;
