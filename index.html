@@ -137,12 +137,6 @@ shuffleArray(photos); // Shuffle before inserting into the DOM
 const template = document.getElementById('photo-template').innerHTML;
 const rendered = Mustache.render(template, { photos });
 document.querySelector('.photo-wrapper').innerHTML = rendered;
-
-    // 2) Render Mustache template into the .photo-wrapper
-    const template = document.getElementById('photo-template').innerHTML;
-    const rendered = Mustache.render(template, { photos });
-    document.querySelector('.photo-wrapper').innerHTML = rendered;
-
     // 3) Slideshow logic
     let currentIndex = 1; // Start with the second photo
 
