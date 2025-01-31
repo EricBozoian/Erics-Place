@@ -175,8 +175,9 @@ document.querySelector('.photo-wrapper').innerHTML = rendered;
 
     // 4) Initialize slideshow
     updatePhotos();
-    document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
-    document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
+    document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'), { passive: true });
+document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'), { passive: true });
+
     setInterval(() => scrollPhotos('right'), 3000);
   </script>
 
