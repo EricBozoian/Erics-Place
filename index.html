@@ -38,24 +38,24 @@
             </div>
         </div>
 
-        <!-- Scrolling Photo Box -->
-        <div class="photo-box">
-            <div class="arrow left-arrow">&#8249;</div>
-            <div class="photo-wrapper">
-                <div class="photo" data-index="0">
-                    <img src="images/photo1.jpg" alt="Photo 1">
-                </div>
-                <div class="photo" data-index="1">
-                    <img src="images/photo2.jpg" alt="Photo 2">
-                </div>
-                <div class="photo" data-index="2">
-                    <img src="images/photo3.jpg" alt="Photo 3">
-                </div>
-            </div>
-            <div class="arrow right-arrow">&#8250;</div>
-        </div>
+       <!-- Scrolling Photo Box -->
+<div class="photo-box">
+    <div class="arrow left-arrow">&#8249;</div>
+    <div class="photo-wrapper">
+        <!-- Mustache will dynamically insert photos here -->
     </div>
-    
+    <div class="arrow right-arrow">&#8250;</div>
+</div>
+
+<!-- Mustache Template for Photo Box -->
+<script id="photo-template" type="text/template">
+    {{#photos}}
+    <div class="photo">
+        <img src="images/image-box-photos/{{.}}" alt="Photo">
+    </div>
+    {{/photos}}
+</script>
+ 
     <!-- BOOMBOX BELOW SCROLLING PHOTOS, ABOVE TEXT BOXES -->
     <div class="boombox-container">
     <!-- Boombox Image as Background -->
@@ -127,11 +127,53 @@
     <!-- Mustache & Slideshow Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
     <script>
-        // Populate Photo Box using Mustache
-        const photos = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg","photo5.jpg","photo6.jpg","photo7.jpg","photo9.jpg","photo10.jpg"];
-        const template = document.getElementById('photo-template').innerHTML;
-        const rendered = Mustache.render(template, { photos });
-        document.querySelector('.photo-wrapper').innerHTML = rendered;
+       // List of photo filenames (easily add/remove from here)
+const photos = [
+    "photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg",
+    "photo5.jpg", "photo6.jpg", "photo7.jpg", "photo8.jpg", "photo9.jpg", "photo10.jpg"
+];
+
+// Render Mustache template and insert into the page
+const template = document.getElementById('photo-template').innerHTML;
+const rendered = Mustache.render(template, { photos });
+document.querySelector('.photo-wrapper').innerHTML = rendered;
+
+// Auto-adjust classes for active/middle photo effect
+let currentIndex = 1; // Start with the second photo
+function updatePhotos() {
+    const photoEls = document.querySelectorAll('.photo');
+    photoEls.forEach((photo, index) => {
+        photo.classList.remove('active', 'left', 'right');
+        if (index === currentIndex) {
+            photo.classList.add('active'); // Center
+        } else if (index === (currentIndex - 1 + photoEls.length) % photoEls.length) {
+            photo.classList.add('left');  // Left side
+        } else if (index === (currentIndex + 1) % photoEls.length) {
+            photo.classList.add('right'); // Right side
+        }
+    });
+    // Shift the wrapper to center the active photo
+    const offset = (currentIndex - 1) * -33.33;
+    document.querySelector('.photo-wrapper').style.transform = `translateX(${offset}%)`;
+}
+
+// Click event for manual scrolling
+function scrollPhotos(direction) {
+    const photoEls = document.querySelectorAll('.photo');
+    if (direction === 'left') {
+        currentIndex = (currentIndex - 1 + photoEls.length) % photoEls.length;
+    } else {
+        currentIndex = (currentIndex + 1) % photoEls.length;
+    }
+    updatePhotos();
+}
+
+updatePhotos();
+document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
+document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
+
+// Auto-scroll every 3 seconds
+setInterval(() => scrollPhotos('right'), 3000);
 
         // Automatic Scrolling
         let currentIndex = 1; // start with the second photo
