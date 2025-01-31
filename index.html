@@ -124,15 +124,19 @@ function shuffleArray(array) {
     }
 }
 
-// Define the photos array
-const photos = [
+// Define and shuffle the photos array
+let photos = [
    "photo1.jpg", "photo2.jpg", "photo3.jpg",
    "photo4.jpg", "photo5.jpg", "photo6.jpg",
    "photo7.jpg", "photo10.jpg", "photo9.jpg"
-];
+].map(photo => `images/image-box-photos/${photo}`); // Add correct path
 
-// Shuffle the photos before rendering
-shuffleArray(photos);
+shuffleArray(photos); // Shuffle before inserting into the DOM
+
+// Render Mustache template into the .photo-wrapper
+const template = document.getElementById('photo-template').innerHTML;
+const rendered = Mustache.render(template, { photos });
+document.querySelector('.photo-wrapper').innerHTML = rendered;
 
     // 2) Render Mustache template into the .photo-wrapper
     const template = document.getElementById('photo-template').innerHTML;
@@ -178,23 +182,14 @@ shuffleArray(photos);
 
   <!-- YouTube IFrame API + Boombox Controls -->
   <script>
-    let player; // global reference
-
-    // Called by the IFrame API automatically
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        videoId: 'ezoOnI95BpE', // The YouTube video ID from your old working code
-        playerVars: {
-          autoplay: 1,
-          mute: 0,
-          controls: 0,
-          rel: 0
-        },
-        events: {
-          'onReady': onPlayerReady
-        }
-      });
-    }
+<iframe 
+  id="player"
+  width="560" 
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/ezoOnI95BpE?autoplay=1&mute=0&enablejsapi=1&origin=https://ericbozoian.github.io"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
 
     function onPlayerReady(event) {
       // Attempt to auto-play
