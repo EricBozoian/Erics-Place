@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Eric's Place</title>
-  
+
   <!-- Link to your single CSS file with ALL design rules -->
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -29,8 +29,8 @@
       <div class="banner-name">Eric Bozoian</div>
       <div class="profile-section">
         <img 
-          src="images/800x800 profile photo.png" 
-          alt="Profile Photo" 
+          src="images/800x800 profile photo.png"
+          alt="Profile Photo"
           class="profile-photo">
       </div>
     </div>
@@ -43,10 +43,9 @@
       </div>
       <div class="arrow right-arrow">&#8250;</div>
     </div>
-  </div>
-  <!-- End .main-content -->
+  </div> <!-- End .main-content -->
 
-  <!-- Mustache Template for Photo Box -->
+  <!-- Mustache Template (for photo box) -->
   <script id="photo-template" type="text/template">
     {{#photos}}
     <div class="photo">
@@ -111,20 +110,19 @@
         </p>
       </div>
     </div>
-  </div>
-  <!-- End .text-boxes-container -->
+  </div> <!-- End .text-boxes-container -->
 
   <!-- Mustache & Slideshow Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
   <script>
-    // 1) Insert the photos array here:
+    // 1) Photos array (using 'photoX.jpg' in images/image-box-photos folder)
     const photos = [
-      "photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg",
-      "photo5.jpg", "photo6.jpg", "photo7.jpg", "photo8.jpg",
-      "photo9.jpg", "photo10.jpg"
+      "photo1.jpg", "photo2.jpg", "photo3.jpg",
+      "photo4.jpg", "photo5.jpg", "photo6.jpg",
+      "photo7.jpg", "photo8.jpg", "photo9.jpg"
     ];
 
-    // 2) Render Mustache template and insert into the page
+    // 2) Render Mustache template into the .photo-wrapper
     const template = document.getElementById('photo-template').innerHTML;
     const rendered = Mustache.render(template, { photos });
     document.querySelector('.photo-wrapper').innerHTML = rendered;
@@ -137,11 +135,11 @@
       photoEls.forEach((photo, index) => {
         photo.classList.remove('active', 'left', 'right');
         if (index === currentIndex) {
-          photo.classList.add('active'); // Center
+          photo.classList.add('active'); // center
         } else if (index === (currentIndex - 1 + photoEls.length) % photoEls.length) {
-          photo.classList.add('left');  // Left side
+          photo.classList.add('left');  // left side
         } else if (index === (currentIndex + 1) % photoEls.length) {
-          photo.classList.add('right'); // Right side
+          photo.classList.add('right'); // right side
         }
       });
       // Shift the wrapper to center the active photo
@@ -151,6 +149,66 @@
 
     function scrollPhotos(direction) {
       const photoEls = document.querySelectorAll('.photo');
+      if (direction === 'left') {
+        currentIndex = (currentIndex - 1 + photoEls.length) % photoEls.length;
+      } else {
+        currentIndex = (currentIndex + 1) % photoEls.length;
+      }
+      updatePhotos();
+    }
+
+    // 4) Initialize slideshow
+    updatePhotos();
+    document.querySelector('.left-arrow').addEventListener('click', () => scrollPhotos('left'));
+    document.querySelector('.right-arrow').addEventListener('click', () => scrollPhotos('right'));
+    setInterval(() => scrollPhotos('right'), 3000);
+  </script>
+
+  <!-- YouTube IFrame API + Boombox Controls -->
+  <script>
+    let player; // global reference
+
+    // Called by the IFrame API automatically
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: 'ezoOnI95BpE', // The YouTube video ID from your old working code
+        playerVars: {
+          autoplay: 1,
+          mute: 0,
+          controls: 0,
+          rel: 0
+        },
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      // Attempt to auto-play
+      event.target.playVideo(); 
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const playBtn = document.getElementById('playBtn');
+      const pauseBtn = document.getElementById('pauseBtn');
+      
+      playBtn.addEventListener('click', () => {
+        if (player && player.playVideo) player.playVideo();
+      });
+      pauseBtn.addEventListener('click', () => {
+        if (player && player.pauseVideo) player.pauseVideo();
+      });
+      // Automatically click the Play button when the page loads (may be blocked)
+      playBtn.click();
+    });
+  </script>
+
+  <!-- Load the YouTube IFrame API script (only once) -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
+
   
 
 
