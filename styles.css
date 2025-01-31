@@ -196,6 +196,41 @@ nav a:hover {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     color: #f5f5f5;
+    font-family: 'Georgia', serif; /* More Dickensian */
+    line-height: 1.6;
+}
+
+/* About section styling */
+.about-section h3 {
+    margin-top: 15px;
+    color: #ffcc00; /* Gold-like old paper effect */
+    font-size: 1.2em;
+}
+
+.about-section h4 {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #f5f5f5;
+    font-style: italic;
+}
+
+.about-section p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+/* Enhancing emoji appearance */
+.about-section p span {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+/* Improve spacing for readability */
+h2 {
+    text-align: center;
+    color: #ffcc00;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 /* Wide box (right) */
