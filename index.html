@@ -196,19 +196,39 @@ document.querySelector('.right-arrow').addEventListener('click', () => scrollPho
       const playBtn = document.getElementById('playBtn');
       const pauseBtn = document.getElementById('pauseBtn');
       
-      playBtn.addEventListener('click', () => {
-        if (player && player.playVideo) player.playVideo();
-      });
-      pauseBtn.addEventListener('click', () => {
-        if (player && player.pauseVideo) player.pauseVideo();
-      });
+    let player; // Declare player globally
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+  }
       // Automatically click the Play button when the page loads (may be blocked)
       playBtn.click();
     });
   </script>
 
   <!-- Load the YouTube IFrame API script (only once) -->
-  <script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  let player;
+
+  function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+          events: {
+              'onReady': onPlayerReady
+          }
+      });
+  }
+
+  function onPlayerReady(event) {
+      event.target.playVideo();
+  }
+</script>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
 </body>
 </html>
 
