@@ -94,49 +94,62 @@ nav a:hover {
 /* ==============================
    SCROLLING PHOTO BOX
    ============================== */
+
+/* Container for the scrolling photo box */
 .photo-box {
-    flex: 1;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    border: 3px solid rgba(255, 255, 255, 0.6);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    background-color: rgba(0, 0, 0, 0.5);
+    flex: 1; /* Allows the box to grow within a flex container */
+    height: 300px; /* Sets a fixed height for the photo box */
+    display: flex; /* Enables flexbox for alignment */
+    align-items: center; /* Centers images vertically */
+    justify-content: center; /* Centers images horizontally */
+    position: relative; /* Allows for absolute positioning inside */
+    overflow: hidden; /* Prevents images from overflowing outside */
+    border: 3px solid rgba(255, 255, 255, 0.6); /* Adds a semi-transparent white border */
+    border-radius: 10px; /* Rounds the corners of the box */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow for depth */
+    background-color: rgba(0, 0, 0, 0.5); /* Sets a dark translucent background */
 }
 
+/* Wrapper for all the photos to allow for smooth scrolling */
 .photo-wrapper {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+    display: flex; /* Enables flexbox for horizontal layout */
+    transition: transform 0.5s ease-in-out; /* Adds smooth transition effect when scrolling */
+    align-items: center; /* Ensures photos align properly */
+    height: 100%; /* Makes sure the wrapper takes up full height of .photo-box */
 }
 
-/* Each photo is 1/3 of the container (3 visible at once) */
+/* Each individual photo container */
 .photo {
-    flex: 0 0 33.33%;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    flex: 0 0 33.33%; /* Each photo takes up one-third of the container */
+    display: flex; /* Enables flexbox for image centering */
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center; /* Centers the image vertically */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition effects */
 }
 
+/* Ensures images are correctly sized and contained */
 .photo img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Ensures image fills the width of its container */
+    max-height: 100%; /* Prevents images from exceeding the container’s height */
+    object-fit: contain; /* Ensures the entire image is visible without cropping */
+    border-radius: 10px; /* Rounds the image corners */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow to the images */
+    transition: transform 0.5s ease-in-out; /* Smooth scaling effect when images change */
 }
 
-/* Active photo in the middle */
+/* The main (center) photo that appears larger */
 .photo.active {
-    opacity: 1;
-    transform: scale(1);
-}
-/* Left & right (side) photos */
-.photo.left, .photo.right {
-    opacity: 0.65;
-    transform: scale(0.75);
+    opacity: 1; /* Ensures full visibility */
+    transform: scale(1); /* Keeps it at its normal size */
+    z-index: 2; /* Places it above other photos for a layered effect */
 }
 
+/* The photos to the left and right of the center */
+.photo.left, .photo.right {
+    opacity: 0.65; /* Makes them slightly transparent */
+    transform: scale(0.75); /* Shrinks them to 75% of their original size */
+    z-index: 1; /* Keeps them behind the center image */
+}
 /* Arrows */
 .arrow {
     position: absolute;
