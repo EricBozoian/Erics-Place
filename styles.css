@@ -190,7 +190,7 @@ nav a:hover {
 
 /* Narrow box (left) */
 .narrow-box {
-   width: 40px; /* Set fixed width */
+   width: 350px; /* Set fixed width */
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     padding: 20px;
