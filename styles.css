@@ -184,7 +184,7 @@ nav a:hover {
     justify-content: space-between;
     margin: 0 auto;
     margin-top: 40px; 
-    max-width: 90%;
+   max-width: 1200px; /* Controls overall width of both boxes */
     gap: 20px;
 }
 
