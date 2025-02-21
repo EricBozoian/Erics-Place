@@ -387,20 +387,20 @@ h2 {
 /* ==============================
    WEBSITE BOXES STYLING
    ============================== */
-/* Ensures consistent alignment */
+/* Ensures consistent alignment and spacing */
 .websites-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Aligns items evenly */
-    align-items: flex-start; /* Ensures top alignment */
+    justify-content: space-between; /* Ensures equal spacing */
+    align-items: flex-start; /* Aligns items to the top */
     gap: 20px; /* Adds spacing */
-    max-width: 80%;
+    max-width: 1200px; /* Prevents stretching on large screens */
     margin: 0 auto; /* Centers the container */
 }
 
 /* Fixes spacing issues with website boxes */
 .website-box {
-    width: calc(33.333% - 20px); /* Adjust to fit evenly */
+    width: calc(33.333% - 20px); /* Ensures three per row */
     max-width: 384px; /* Prevents stretching */
     height: 384px;
     display: flex;
@@ -417,7 +417,15 @@ h2 {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Ensures proper text alignment */
+/* Ensures last row stays centered if not full */
+.website-box:nth-last-child(1):nth-child(3n + 1),
+.website-box:nth-last-child(2):nth-child(3n + 1),
+.website-box:nth-last-child(2):nth-child(3n + 2) {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Website link styles */
 .website-box a {
     color: white;
     font-size: 1.5em;
@@ -431,17 +439,11 @@ h2 {
     z-index: 2;
 }
 
-/* Ensures boxes stay aligned */
-.website-box:nth-child(odd) {
-    align-self: flex-start;
-}
-
 /* Hover Effect */
 .website-box:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
 }
-
 
 /* Website links inside the box */
 .website-box {
