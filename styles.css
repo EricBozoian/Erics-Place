@@ -387,33 +387,61 @@ h2 {
 /* ==============================
    WEBSITE BOXES STYLING
    ============================== */
+/* Ensures consistent alignment */
 .websites-container {
     display: flex;
-    justify-content: center;
-    gap: 20px; /* Space between boxes */
-    flex-wrap: wrap; /* Ensures boxes wrap if the screen is small */
-    margin-top: 20px; /* Space from content above */
+    flex-wrap: wrap;
+    justify-content: center; /* Aligns items evenly */
+    align-items: flex-start; /* Ensures top alignment */
+    gap: 20px; /* Adds spacing */
+    max-width: 80%;
+    margin: 0 auto; /* Centers the container */
 }
 
+/* Fixes spacing issues with website boxes */
 .website-box {
-    width: 384px; /* 4 inches */
-    height: 384px; /* 4 inches */
+    width: calc(33.333% - 20px); /* Adjust to fit evenly */
+    max-width: 384px; /* Prevents stretching */
+    height: 384px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Slight border to match theme */
+    border-radius: 10px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Hover effect */
-.website-box:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5); /* More pronounced glow */
+/* Ensures proper text alignment */
+.website-box a {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
 }
+
+/* Ensures boxes stay aligned */
+.website-box:nth-child(odd) {
+    align-self: flex-start;
+}
+
+/* Hover Effect */
+.website-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
+}
+
 
 /* Website links inside the box */
 .website-box {
